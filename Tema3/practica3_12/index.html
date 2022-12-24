@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 12</title>
+    <script>
+        function numeroEntradas() {
+            document.getElementById("numeroEntradas").innerHTML = ": " + history.length
+        }
+        function recargarPagina() {
+            history.go(0)
+        }
+        function irAdelanteHistorial() {
+            numeroPaginas = document.getElementById("numeroPaginas").value
+            history.go(numeroPaginas)
+        }
+        function irAtrasHistorial() {
+            numeroPaginas = document.getElementById("numeroPaginas").value
+            history.go(-numeroPaginas)
+        }
+    </script>
+</head>
+
+<body>
+    <p>Numero de entradas del historial<span id="numeroEntradas"></span></p>
+    <button onclick="numeroEntradas()">Mostrar</button><br>
+
+    <p>Recargar pagina</p>
+    <button onclick="recargarPagina()">Recargar</button><br>
+    <p id="recargarPagina"></p>
+
+    <p><label for="numeroPaginas">Numero de paginas</label>
+        <input type="number" name="numeroPaginas" id="numeroPaginas" value="0" min="0" max="100">
+    </p>
+    <button onclick="irAtrasHistorial()">Atras</button>
+    <button onclick="irAdelanteHistorial()">Adelante</button><br>
+</body>
+
+</html>

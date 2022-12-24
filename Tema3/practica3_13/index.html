@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 13</title>
+    <script>
+        function mostarParrafo1() {
+            const parrafo1 = document.getElementById("parrafo1")
+            const x = parrafo1.nodeType;
+            const z = document.getElementsByTagName("p")[0];
+            const valorNodo = z.childNodes[0].nodeValue;
+            console.log("Tipo de nodo: " + x);
+            console.log("Nombre del nodo: " + z.nodeName);
+            console.log("Valor del nodo: " + valorNodo);
+            for (let index = 0; index < parrafo1.attributes.length; index++) {
+                console.log(`Nombre atributo ${index + 1}: ` + parrafo1.attributes[index].name);
+            }
+        }
+        function mostarParrafos() {
+            const parrafos = document.getElementsByTagName("p")
+            console.log("-----BUCLE FOR-----");
+            for (let index = 0; index < parrafos.length; index++) {
+                console.log("Tipo de nodo: " + parrafos[index].nodeType);
+                console.log("Nombre del nodo: " + parrafos[index].nodeName);
+                console.log("Valor del nodo: " + parrafos[index].childNodes[0].nodeValue);
+            }
+            console.log(parrafos);
+            console.log("-----BUCLE FOR IN-----");
+            for (const key in parrafos) {
+                if (Number.isInteger(+key)) {
+                    console.log("Tipo de nodo: " + parrafos[key].nodeType);
+                    console.log("Nombre del nodo: " + parrafos[key].nodeName);
+                    console.log("Valor del nodo: " + parrafos[key].childNodes[0].nodeValue);
+                }
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Pruebas con nodos</h1>
+    <h3>Resultados en la consola</h3>
+    <p id="parrafo1" atributo1="atributo 1" atributo2="atributo 2">Este es el texto del primer parrafo.</p>
+    <button onclick="mostarParrafo1()">Información del primer parrafo</button>
+    <p id="parrafo1">El mensaje del segundo parrafo es este.</p>
+    <!-- El tercer parrafo es para comprobar que existen mas nodos hijos -->
+    <p id="parrafo1">El mensaje del <strong>TERCER</strong> parrafo es este.</p>
+    <button onclick="mostarParrafos()">Información de todos los parrafos.</button>
+</body>
+
+</html>

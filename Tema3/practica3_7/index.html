@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 7</title>
+    <script>
+        function validarNombre() {
+            nombre = document.getElementById("nombre").value
+            const nombreRegExp = new RegExp(/^[a-zA-Z]{3,}(\s)?[a-zA-Z]{0,}$/)
+            result = nombreRegExp.test(nombre) ? "Nombre valido" : "Nombre NO valido"
+            document.getElementById("nombreValidado").innerHTML = result
+        }
+        function validarApellidos() {
+            apellidos = document.getElementById("apellidos").value
+            const apellidoRegExp = new RegExp(/^[a-zA-Z]{2,}((\-|\s)[a-zA-Z]{2,})?(\s)[a-zA-Z]{2,}((\-|\s)[a-zA-Z]{2,})?$/)
+            result = apellidoRegExp.test(apellidos) ? "Apellido valido" : "Apellido NO valido"
+            document.getElementById("apellidoValidado").innerHTML = result
+        }
+        function validarDireccion() {
+            direccion = document.getElementById("direccion").value
+            const direccionRegExp = new RegExp(/^C(\/)[a-zA-Z]{2,}(\s[a-zA-Z]{2,})*,\s[0-9]{1,3},\s[0-9]{1,2},\s[a-zA-Z]{1,2}$/)
+            result = direccionRegExp.test(direccion) ? "Direccion valida" : "Direccion NO valida"
+            document.getElementById("direccionValidada").innerHTML = result
+        }
+        function validarTelefono() {
+            telefono = document.getElementById("telefono").value
+            const telefonoRegExp = new RegExp(/^[0-9]{3}\-[0-9]{3}\-[0-9]{3}$/)
+            result = telefonoRegExp.test(telefono) ? "Telefono valido" : "Telefono NO valido"
+            document.getElementById("telefonoValidado").innerHTML = result
+        }
+    </script>
+</head>
+
+<body>
+    <div>
+        <label for="nombre">Introduzca su nombre:</label>
+        <input type="text" id="nombre" name="nombre" required minlength="4" maxlength="28" size="28">
+        <button onclick="validarNombre()">Validar nombre</button>
+        <p id="nombreValidado"></p>
+    </div>
+    <div>
+        <label for="apellidos">Introduzca sus apellidos:</label>
+        <input type="text" id="apellidos" name="apellidos" required minlength="4" maxlength="28" size="28">
+        <button onclick="validarApellidos()">Validar apellidos</button>
+        <p id="apellidoValidado"></p>
+    </div>
+    <div>
+        <label for="direccion">Introduzca su direccion:</label>
+        <input type="text" id="direccion" name="direccion" required minlength="4" size="28">
+        <button onclick="validarDireccion()">Validar direccion</button>
+        <p id="direccionValidada"></p>
+    </div>
+    <div>
+        <label for="telefono">Introduzca su telefono:</label>
+        <input type="text" id="telefono" name="telefono" required minlength="4" maxlength="28" size="28">
+        <button onclick="validarTelefono()">Validar telefono</button>
+        <p id="telefonoValidado"></p>
+    </div>
+</body>
+
+</html>

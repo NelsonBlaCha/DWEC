@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 3</title>
+</head>
+<script>
+    function Coches(marca, modelo, velocidad) {
+        this.marca = marca
+        this.modelo = modelo
+        this.velocidad = velocidad
+        this.acelerar = () => `El ${this.marca} ${this.modelo} ha acelerado hasta ${this.velocidad}`
+    }
+    const coche1 = new Coches("Porche", "Challenge", 120)
+    const coche2 = new Coches("BMW", "M3", 110)
+    function mostrarCoche(objeto) {
+        for (let key in objeto) {
+            alert(`${key} tiene el valor ${objeto[key]}`)
+        }
+        alert(`El objet proviene de la clase: ${objeto.constructor.name}`)
+    }
+    console.log(getFunctionName(coche1));
+</script>
+
+<body>
+    <button onclick="mostrarCoche(coche1)">Mostrar coche 1</button>
+    <button onclick="mostrarCoche(coche2)">Mostrar coche 2</button>
+</body>
+
+</html>

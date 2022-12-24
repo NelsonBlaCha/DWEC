@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4 Ejercicio 4</title>
+    <script>
+        const jefa = {
+            nombre: "Marina",
+            apellidos: "Lopez Fernandez",
+            DNI: "10222333X",
+            dinero: "1.000.000 &#8377;",
+            edad: 32
+        }
+        let jefaJson;
+        function stringifyJson() {
+            jefaJson = JSON.stringify(jefa);
+            document.getElementById("stringifyParrafo").innerHTML = jefaJson
+        }
+        function parseJson() {
+            try {
+                parseParrafo = document.getElementById("parseParrafo").value
+                jefaParse = JSON.parse(parseParrafo)
+                console.log(jefaParse);
+            } catch (error) {
+                console.log("No se ha introducido un JSON válido.");
+            }
+        }
+        function mostrarObjeto() {
+            try {
+                parseParrafo = document.getElementById("parseParrafo").value
+                jefaParse = JSON.parse(parseParrafo)
+                for (let clave in jefaParse) {
+                    console.log(`El campo ${clave} tiene el valor ${jefa[clave]}`);
+                }
+            } catch (error) {
+                console.log("No se ha introducido un JSON válido.");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>{</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;nombre: "Marina",</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;apellidos: "Lopez Fernandez",</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;DNI: "10222333X",</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dinero: "1.000.000 &#8377;"</p>
+    <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Edad: 32</p>
+    <p>}</p>
+    <button onclick="stringifyJson()">Transformar en JSON</button><br>
+    <p id="stringifyParrafo"></p><br>
+    <input type="text" name="parseParrafo" id="parseParrafo" size="100"><br><br>
+    <button onclick="parseJson()">Transformar en objeto (consola)</button><br><br>
+    <button onclick="mostrarObjeto()">Mostrar campos del objeto del input (consola)</button>
+</body>
+
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 6</title>
+    <script>
+        let inicioTiempo;
+        let finalTiempo;
+        let diferenciaTiempo;
+        function inicio() {
+            inicioTiempo = Date.now()
+            const miDia = new Date()
+            document.getElementById("parrafo1").innerHTML = miDia
+            document.getElementById("parrafo2").innerHTML = ""
+            document.getElementById("parrafo3").innerHTML = ""
+        }
+        function final() {
+            finalTiempo = Date.now()
+            const miDia = new Date()
+            document.getElementById("parrafo1").innerHTML = miDia
+            document.getElementById("parrafo2").innerHTML = ""
+            document.getElementById("parrafo3").innerHTML = ""
+        }
+        function mostrar() {
+            diferenciaTiempo = finalTiempo - inicioTiempo
+            const milisegundos = diferenciaTiempo
+            const segundos = Math.round(diferenciaTiempo / 1000, 0)
+            const minutos = Math.round(segundos / 60, 0)
+            document.getElementById("parrafo1").innerHTML = milisegundos + " ms"
+            document.getElementById("parrafo2").innerHTML = segundos + " s"
+            document.getElementById("parrafo3").innerHTML = minutos + " min"
+        }
+    </script>
+</head>
+
+<body>
+    <button id="botonInicio" onclick="inicio()">Inicio cronometro</button>
+    <button id="botonFinal" onclick="final()">Final cronometro</button>
+    <button id="botonMostrar" onclick="mostrar()">Mostrar resultado</button>
+    <p id="parrafo1"></p>
+    <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+</body>
+
+</html>

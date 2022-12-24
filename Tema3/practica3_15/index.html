@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Ejercicio 15</title>
+    <script>
+        function mostrarFormulario() {
+            const ventanaA = window.open("", "", "_blank, resizable, width=500,height=500");
+            const section = document.createElement("section")
+            section.setAttribute("id", "seccion")
+            section.setAttribute("style", "width:60%; margin:auto;")
+            ventanaA.document.body.appendChild(section)
+            const formulario = document.createElement("form")
+            formulario.setAttribute("action", "#")
+            formulario.setAttribute("method", "post")
+            const titulo = document.createElement("h1");
+            const nombre = document.createElement("input")
+            nombre.setAttribute("type", "text")
+            nombre.setAttribute("name", "nombre")
+            nombre.setAttribute("id", "nombre")
+            nombre.setAttribute("style", "width:100%; margin-top:15px;")
+            nombre.setAttribute("placeholder", "Nombre")
+            const apellidos = document.createElement("input")
+            apellidos.setAttribute("type", "text")
+            apellidos.setAttribute("name", "apellidos")
+            apellidos.setAttribute("id", "apellidos")
+            apellidos.setAttribute("style", "width:100%; margin-top:15px;")
+            apellidos.setAttribute("placeholder", "Apellidos")
+            const email = document.createElement("input")
+            email.setAttribute("type", "email")
+            email.setAttribute("name", "email")
+            email.setAttribute("id", "email")
+            email.setAttribute("style", "width:100%; margin-top:15px;")
+            email.setAttribute("placeholder", "Email")
+            const asunto = document.createElement("input")
+            asunto.setAttribute("type", "text")
+            asunto.setAttribute("name", "asunto")
+            asunto.setAttribute("id", "asunto")
+            asunto.setAttribute("style", "width:100%; margin-top:15px;")
+            asunto.setAttribute("placeholder", "Asunto")
+            const mensaje = document.createElement("textarea")
+            mensaje.setAttribute("name", "mensaje")
+            mensaje.setAttribute("id", "mensaje")
+            mensaje.setAttribute("cols", "30")
+            mensaje.setAttribute("rows", "10")
+            mensaje.setAttribute("style", "width:100%; margin-top:15px;")
+            mensaje.setAttribute("placeholder", "Mensaje")
+            const botonEnviar = document.createElement("button")
+            botonEnviar.setAttribute("value", "Enviar")
+            botonEnviar.setAttribute("onclick", "alert ('Mensaje enviado correctamente')")
+            titulo.innerHTML = "Contacto"
+            botonEnviar.innerHTML = "Enviar"
+            formulario.appendChild(titulo)
+            formulario.appendChild(nombre)
+            formulario.appendChild(apellidos)
+            formulario.appendChild(email)
+            formulario.appendChild(asunto)
+            formulario.appendChild(mensaje)
+            section.appendChild(formulario);
+            section.appendChild(botonEnviar)
+        }
+    </script>
+</head>
+
+<body>
+    <section id="seccion2" style="width:30%; margin:auto;">
+        <button onclick="mostrarFormulario()">Mostrar formulario</button>
+    </section>
+</body>
+
+</html>

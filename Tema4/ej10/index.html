@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tema 4 Ejercicio 10</title>
+	<style>
+		textarea {
+			width: 99%;
+		}
+	</style>
+	<script>
+		const alfabeto = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "ñ", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+		function cifrar() {
+			const textoUsuario = document.getElementById("textoUsuario").value.toLowerCase()
+			const desplazamiento = parseInt(document.getElementById("desplazamientoCifrado").value)
+			const textoCifradoHTML = document.getElementById("textoCifrado")
+			const arrayTexto = textoUsuario.split("")
+			let textoCifrado = ""
+			arrayTexto.forEach(element => {
+				if (alfabeto.includes(element)) {
+					let indexLetra = alfabeto.indexOf(element) + desplazamiento
+					if (indexLetra > alfabeto.length) {
+						// Si el index resultante es mas largo que el array tenemos que empezar desde el principio
+						indexLetra = indexLetra - alfabeto.length
+					}
+					textoCifrado = textoCifrado + alfabeto[indexLetra]
+				} else {
+					textoCifrado = textoCifrado + "#"
+				}
+			});
+			textoCifradoHTML.innerHTML = textoCifrado
+		}
+		function descifrar() {
+			const textoUsuario = document.getElementById("textoCifradoUsuario").value
+			const desplazamiento = parseInt(document.getElementById("desplazamientoDescifrado").value)
+			const textoDescifradoHTML = document.getElementById("textoDescifrado")
+			const arrayTexto = textoUsuario.split("")
+			let textoDescifrado = ""
+			arrayTexto.forEach(element => {
+				if (alfabeto.includes(element)) {
+					let indexLetra = alfabeto.indexOf(element) - desplazamiento
+					if (indexLetra < 0) {
+						// Si el index resultante es menor de 0 tenemos que ajustar el index desde el final de array
+						indexLetra = indexLetra + alfabeto.length
+					}
+					textoDescifrado = textoDescifrado + alfabeto[indexLetra]
+				} else {
+					textoDescifrado = textoDescifrado + "#"
+				}
+			});
+			textoDescifradoHTML.innerHTML = textoDescifrado
+		}
+		// hrlh#phjah#lza = alea#jacta#est
+	</script>
+</head>
+
+<body>
+	<textarea name="textoUsuario" id="textoUsuario" cols="30" rows="10"
+		placeholder="Introduzca el texto para cifrarlo"></textarea><br>
+	<input type="number" name="desplazamientoCifrado" id="desplazamientoCifrado" placeholder="Desplazamiento"><br>
+	<button onclick="cifrar()">Cifrar texto</button><br>
+	<textarea name="textoCifrado" id="textoCifrado" cols="30" rows="10"></textarea>
+	<br><br><br>
+	<textarea name="textoCifradoUsuario" id="textoCifradoUsuario" cols="30" rows="10"
+		placeholder="Introduzca el texto para descifrarlo"></textarea><br>
+	<input type="number" name="desplazamientoDescifrado" id="desplazamientoDescifrado" placeholder="Desplazamiento"><br>
+	<button onclick="descifrar()">Descifrar texto</button><br>
+	<textarea name="textoDescifrado" id="textoDescifrado" cols="30" rows="10"></textarea>
+</body>
+
+</html>

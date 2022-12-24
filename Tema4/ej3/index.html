@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./Examen DW2T_DWEC_T1-T3. Recursos CSS.css">
+    <title>Tema 4 Ejercicio 3</title>
+    <script>
+        // Objeto SEMAFORO
+        semaforo = {
+            apagarSemaforo: function () {
+                const colorRojo = document.getElementById("colorRojo")
+                const colorAmarillo = document.getElementById("colorAmarillo")
+                const colorVerde = document.getElementById("colorVerde")
+                colorRojo.classList.remove("colorRojo")
+                colorAmarillo.classList.remove("colorAmarillo")
+                colorVerde.classList.remove("colorVerde")
+            },
+            encenderRojo: function () {
+                const colorRojo = document.getElementById("colorRojo")
+                colorRojo.classList.add("colorRojo")
+            },
+            encenderAmarillo: function () {
+                const colorAmarillo = document.getElementById("colorAmarillo")
+                colorAmarillo.classList.add("colorAmarillo")
+            },
+            encenderVerde: function () {
+                const colorVerde = document.getElementById("colorVerde")
+                colorVerde.classList.add("colorVerde")
+            },
+            validarPassword: function (passwordRegex) {
+                resultado = false
+                const verificarRegExp = new RegExp(/^[a-zA-Z0-9]{3,6}[@#~%&/$][a-zA-Z0-9]{3,6}$/)
+                resultado = verificarRegExp.test(passwordRegex) ? true : false;
+                return resultado
+            },
+        }
+        // Funcion para encender determinada bombilla adecuada desde la pagina padre
+        function encenderBombillaPadre(color) {
+            switch (color) {
+                case "colorRojo":
+                    semaforo.apagarSemaforo()
+                    semaforo.encenderRojo()
+                    break;
+                case "colorAmarillo":
+                    semaforo.apagarSemaforo()
+                    semaforo.encenderAmarillo()
+                    break;
+                case "colorVerde":
+                    semaforo.apagarSemaforo()
+                    semaforo.encenderVerde()
+                    break;
+            }
+
+        }
+        // Funcion para encender y apagar bombillas
+        let intervalID;
+        let timeoutIDInicioV;
+        let timeoutIDInicioA;
+        let timeoutIDInicioR;
+        function encenderCiclo() {
+            timeoutIDInicioV = setTimeout(encenderBombillaPadre, 0, "colorVerde");
+            timeoutIDInicioA = setTimeout(encenderBombillaPadre, 2000, "colorAmarillo");
+            timeoutIDInicioR = setTimeout(encenderBombillaPadre, 4000, "colorRojo");
+        }
+        function encenderCicloContinuo() {
+            encenderCiclo()
+            intervalID = setInterval(encenderCiclo, 6000);
+        }
+        function detenerCiclo() {
+            clearTimeout(timeoutIDInicioV)
+            clearTimeout(timeoutIDInicioA)
+            clearTimeout(timeoutIDInicioR)
+            clearInterval(intervalID)
+        }
+    </script>
+</head>
+
+<body>
+    <div class="cuerpo colorNegro">
+        <div class="bombilla colorRojo" id="colorRojo"> </div>
+        <div class="bombilla colorAmarillo" id="colorAmarillo"> </div>
+        <div class="bombilla colorVerde" id="colorVerde"> </div>
+    </div>
+    <button onclick="encenderCiclo()">Ciclo simple</button>
+    <button onclick="encenderCicloContinuo()">Ciclo completo</button>
+    <button onclick="detenerCiclo()">Parar semaforo</button><br>
+
+</body>
+
+</html>

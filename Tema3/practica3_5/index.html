@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 5</title>
+    <script>
+        Math.MCD = function MCD(a, b) {
+            if (!isNaN(a) && !isNaN(b) && a != 0 && b != 0) {
+                if (a % b == 0) {
+                    return b
+                } else {
+                    return Math.MCD(b, a % b)
+                }
+            }
+            else if (a == 0 && a != "" || b == 0 && b != "") {
+                throw "Debe introducir numeros mayores a 0"
+            }
+            else {
+                throw "Debe introducir numeros mayores a 0"
+            }
+        }
+        Math.mcm = function mcm(a, b) {
+            return ((a * b) / Math.MCD(a, b))
+        }
+        function borrar() {
+            document.getElementById("numero1").value = 1
+            document.getElementById("numero2").value = 1
+            document.getElementById("parrafo1").innerHTML = ""
+            document.getElementById("parrafo2").innerHTML = ""
+        }
+        function calcularMCDyMCM() {
+            try {
+                const numero1 = document.getElementById("numero1").value
+                const numero2 = document.getElementById("numero2").value
+                document.getElementById("parrafo1").innerHTML = "El maximo comun divisor es " + Math.MCD(numero1, numero2);
+                document.getElementById("parrafo2").innerHTML = "El minimo comun multiplo es " + Math.mcm(numero1, numero2);
+            } catch (error) {
+                document.getElementById("parrafo1").innerHTML = error;
+                document.getElementById("parrafo2").innerHTML = "";
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <p>
+        <label for="numero1">Numero 1:</label>
+        <input type="number" name="numero1" id="numero1" value="1">
+    </p>
+    <p>
+        <label for="numero2">Numero 2:</label>
+        <input type="number" name="numero2" id="numero2" value="1">
+    </p>
+    <p>
+        <button onclick="calcularMCDyMCM()">Comprobar</button>
+        <button onclick="borrar()">Reiniciar</button>
+    </p>
+    <p id="parrafo1"></p>
+    <p id="parrafo2"></p>
+</body>
+
+</html>

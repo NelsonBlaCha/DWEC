@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4 Ejercicio 5</title>
+    <script>
+        const arrayNumeros = [3, 5, 6, 7, 8, 0, 4, 2]
+        function recorrerArray() {
+            metodo = document.getElementById("metodo").value
+            switch (metodo) {
+                case "metodoFor":
+                    for (let index = 0; index < arrayNumeros.length; index++) {
+                        let valor = arrayNumeros[index]
+                        if (valor == 0) {
+                            console.log(" ")
+                            continue
+                        }
+                        let estrellas = ""
+                        while (valor != 0) {
+                            estrellas += "*"
+                            valor--
+                        }
+                        console.log(estrellas);
+                    }
+                    break;
+                case "metodoForIn":
+                    for (const key in arrayNumeros) {
+                        let valor = arrayNumeros[key]
+                        if (valor == 0) {
+                            console.log(" ")
+                            continue
+                        }
+                        let estrellas = ""
+                        while (valor != 0) {
+                            estrellas += "*"
+                            valor--
+                        }
+                        console.log(estrellas);
+                    }
+                    break;
+                case "metodoForOf":
+                    for (const iterator of arrayNumeros) {
+                        let valor = iterator
+                        if (valor == 0) {
+                            console.log(" ")
+                            continue
+                        }
+                        let estrellas = ""
+                        while (valor != 0) {
+                            estrellas += "*"
+                            valor--
+                        }
+                        console.log(estrellas);
+                    }
+                    break;
+                case "metodoForEach":
+                    arrayNumeros.forEach(element => {
+                        let valor = element
+                        if (valor == 0) {
+                            console.log(" ")
+                            return
+                        }
+                        let estrellas = ""
+                        while (valor != 0) {
+                            estrellas += "*"
+                            valor--
+                        }
+                        console.log(estrellas);
+                    })
+                    break;
+                case "metodoMap":
+                    arrayNumeros.map(element => {
+                        if (element == 0) {
+                            console.log(" ")
+                            return
+                        }
+                        let estrellas = ""
+                        while (element != 0) {
+                            estrellas += "*"
+                            element--
+                        }
+                        console.log(estrellas);
+                    })
+                    break;
+                default:
+                    console.log("No se ha podido mostrar el array.");
+                    break;
+            }
+        }
+        function recorrerArrayUsuario() {
+            arrayUsuario = document.getElementById("arrayUsuario").value.split(",")
+            arrayUsuario.map((element, indice) => {
+                if (isNaN(element)) {
+                    console.log(`El elemento con índice ${indice} y valor ${element} no es un número válido.`);
+                } else {
+                    if (element == 0) {
+                        console.log(" ")
+                        return
+                    }
+                    let estrellas = ""
+                    while (element != 0) {
+                        estrellas += "*"
+                        element--
+                    }
+                    console.log(estrellas);
+                }
+            })
+        }
+        function recorrerArrayUsuarioEval() {
+            arrayUsuario = document.getElementById("arrayUsuario").value
+            console.log(arrayUsuario);
+            arrayUsuarioEval = eval("[" + arrayUsuario + "]");
+            console.log(arrayUsuarioEval);
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Metodos recorrer array</h1>
+    <label for="metodo">Metodo para recorrer el array ya creado </label>
+    <select name="metodo" id="metodo">
+        <option value="metodoFor">Metodo FOR</option>
+        <option value="metodoForIn">Metodo FOR IN</option>
+        <option value="metodoForOf">Metodo FOR OF</option>
+        <option value="metodoForEach">Metodo ForEACH</option>
+        <option value="metodoMap">Metodo MAP</option>
+    </select>
+    <button onclick="recorrerArray()">Mostrar</button><br>
+    <label for="arrayUsuario">Introduzca el array que se mostrara por consola</label>
+    <input type="text" name="arrayUsuario" id="arrayUsuario" placeholder="Números separados por comas">
+    <button onclick="recorrerArrayUsuario()">Mostrar</button>
+    <button onclick="recorrerArrayUsuarioEval()">Mostrar con Eval</button>
+</body>
+
+</html>

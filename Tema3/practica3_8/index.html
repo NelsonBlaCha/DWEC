@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema3 Practica 8</title>
+    <script>
+        let ventanaA;
+        function abrirVentana() {
+            anchoVentana = document.getElementById("ancho").value
+            altoVentana = document.getElementById("alto").value
+            xVentana = document.getElementById("posicionX").value
+            yVentana = document.getElementById("posicionY").value
+            ventanaA = window.open("https://google.es", "miventana", `resizable, left=${xVentana}, top=${yVentana}, width=${anchoVentana},height=${altoVentana}`);
+        }
+        function cerrarVentana() {
+            ventanaA.close()
+        }
+        function alturaExterior() {
+            document.getElementById("alturaExterior").innerHTML = window.outerHeight
+        }
+        function alturaInterior() {
+            document.getElementById("alturaInterior").innerHTML = window.innerHeight
+        }
+        function anchuraExterior() {
+            document.getElementById("anchuraExterior").innerHTML = window.outerWidth
+        }
+        function anchuraInterior() {
+            document.getElementById("anchuraInterior").innerHTML = window.innerWidth
+        }
+        function moverX() {
+            console.log(ventanaA.screeenX);
+        }
+    </script>
+</head>
+
+<body>
+    <label for="ancho">Ancho: </label><input type="number" name="ancho" id="ancho" value="0" size="5">
+    <label for="alto">Alto: </label><input type="number" name="alto" id="alto" value="0" size="5">
+    <label for="posicionX">Posicion X: </label><input type="number" name="posicionX" id="posicionX" value="0" size="5">
+    <label for="posicionY">Posicion Y: </label><input type="number" name="posicionY" id="posicionY" value="0" size="5">
+    <p>Abrir ventana</p>
+    <button onclick="abrirVentana()">Abrir Ventana</button><br>
+    <p>Cerrar ventana</p>
+    <button onclick="cerrarVentana()">Cerrar Ventana</button><br>
+    <p>Altura exterior ventana actual <span id="alturaExterior"></span></p>
+    <button onclick="alturaExterior()">Altura exterior ventana actual</button><br>
+    <p>Altura interior ventana actual <span id="alturaInterior"></span></p>
+    <button onclick="alturaInterior()">Altura interior ventana actual</button><br>
+    <p>Ancho exterior ventana actual <span id="anchuraExterior"></span></p>
+    <button onclick="anchuraExterior()">Ancho exterior ventana actual</button><br>
+    <p>Ancho interior ventana actual <span id="anchuraInterior"></span></p>
+    <button onclick="anchuraInterior()">Ancho interior ventana actual</button><br>
+</body>
+
+</html>

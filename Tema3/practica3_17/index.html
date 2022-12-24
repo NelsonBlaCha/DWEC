@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 17</title>
+    <script>
+        let ventanaA;
+        function mostrarVentana() {
+            ventanaA = window.open("../practica3_16/index.html", "", "_blank, resizable, width=500, height=700, left=900");
+        }
+        function mostrarClases() {
+            if (ventanaA != undefined) {
+                const div1 = ventanaA.document.getElementById("div1");
+                const div2 = ventanaA.document.getElementById("div2");
+                const div3 = ventanaA.document.getElementById("div3");
+                const div4 = ventanaA.document.getElementById("div4");
+                let clasesParrafo1 = "Las clases del div 1 son:"
+                div1.classList.forEach(y => clasesParrafo1 = clasesParrafo1 + " " + y)
+                let clasesParrafo2 = "Las clases del div 2 son:"
+                div2.classList.forEach(y => clasesParrafo2 = clasesParrafo2 + " " + y)
+                let clasesParrafo3 = "Las clases del div 3 son:"
+                div3.classList.forEach(y => clasesParrafo3 = clasesParrafo3 + " " + y)
+                let clasesParrafo4 = "Las clases del div 4 son:"
+                div4.classList.forEach(y => clasesParrafo4 = clasesParrafo4 + " " + y)
+                const parrafo1 = document.createElement("p")
+                parrafo1.innerHTML = clasesParrafo1
+                const parrafo2 = document.createElement("p")
+                parrafo2.innerHTML = clasesParrafo2
+                const parrafo3 = document.createElement("p")
+                parrafo3.innerHTML = clasesParrafo3
+                const parrafo4 = document.createElement("p")
+                parrafo4.innerHTML = clasesParrafo4
+                document.body.appendChild(parrafo1)
+                document.body.appendChild(parrafo2)
+                document.body.appendChild(parrafo3)
+                document.body.appendChild(parrafo4)
+            }
+        }
+        function cerrarVentana() {
+            ventanaA.close()
+        }
+        function cambiarClaseVentana() {
+            const div1 = ventanaA.document.getElementById("div1")
+            div1.classList.remove("div1")
+            div1.classList.add("div3")
+            const div2 = ventanaA.document.getElementById("div2")
+            div2.classList.remove("div2")
+            div2.classList.add("div1")
+            const div3 = ventanaA.document.getElementById("div3")
+            div3.classList.remove("div3")
+            div3.className = "div2"
+            const div4 = ventanaA.document.getElementById("div4")
+            div4.className = "div3"
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="mostrarVentana()">Mostrar ejercicio 16</button><br>
+    <button onclick="mostrarClases()">Mostrar clases</button><br>
+    <button onclick="cambiarClaseVentana()">Cambiar clase de la ventana</button><br>
+    <button onclick="cerrarVentana()">Cerrar ventana</button>
+</body>
+
+</html>

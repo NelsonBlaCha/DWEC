@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tema 4 Ejercicio 6</title>
+	<script>
+		let arrayAutomatico = [];
+		let arrayPares = [];
+		let arrayImpares = [];
+		function rellenarAutoArray() {
+			arrayAutomatico = []
+			cantidadNumeros = document.getElementById("numeros").value
+			parrafoArray = document.getElementById("rellenarAutomaticamente")
+			for (let index = 0; index < cantidadNumeros; index++) {
+				arrayAutomatico.push(Math.floor(Math.random() * 100) + 1)
+			}
+			parrafoArray.innerHTML = arrayAutomatico
+		}
+
+		function separarArray() {
+			if (arrayPares.length == 0 && arrayImpares.length == 0) {
+				arrayAutomatico.forEach(
+					numero => {
+						if (numero % 2 == 0) {
+							arrayPares.push(numero)
+						} else {
+							arrayImpares.push(numero)
+						}
+					}
+				)
+			}
+		}
+
+		function ordenarPares() {
+			separarArray()
+			arrayOrdenadoPares = [...arrayPares, ...arrayImpares]
+			document.getElementById("paresPrimero").innerHTML = arrayOrdenadoPares
+		}
+
+		function ordenarImpares() {
+			separarArray()
+			arrayOrdenadoImpares = [...arrayImpares, ...arrayPares]
+			document.getElementById("imparesPrimero").innerHTML = arrayOrdenadoImpares
+		}
+
+		// IA
+		function evenAndOdd(arr) {
+			// Crea dos arrays vacíos: uno para los números pares y otro para los impares
+			var even = [];
+			var odd = [];
+
+			// Recorre el array original y separa los números pares de los impares
+			for (var i = 0; i < arr.length; i++) {
+				if (arr[i] % 2 === 0) {
+					even.push(arr[i]);
+				} else {
+					odd.push(arr[i]);
+				}
+			}
+
+			// Devuelve un nuevo array que contenga primero los números pares y luego los impares
+			return even.concat(odd);
+		}
+		const numbers = [50, 34, 42, 95, 24, 56, 95, 27, 22, 13, 72, 93, 14, 99, 9, 64, 33, 41, 51]
+		var result = evenAndOdd(numbers);
+		console.log(result);
+	</script>
+</head>
+
+<body>
+	<h1>Separar un array en pares e impares</h1>
+	<label for="numeros">Elige el numero de elementos del array</label>
+	<input type="text" name="numeros" id="numeros">
+	<button onclick="rellenarAutoArray()">Rellenar el array aleatoriamente</button>
+	<p id="rellenarAutomaticamente"></p>
+	<label for="mostrarPares">Mostrar el array con los numeros pares primero</label>
+	<button onclick="ordenarPares()">Mostrar el array con los numeros pares primero</button>
+	<p id="paresPrimero"></p>
+	<label for="mostrarImpares">Mostrar el array con los numeros impares primero</label>
+	<button onclick="ordenarImpares()">Mostrar el array con los numeros impares primero</button>
+	<p id="imparesPrimero"></p>
+</body>
+
+</html>

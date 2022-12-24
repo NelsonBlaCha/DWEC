@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tema 4 Ejercicio 7</title>
+	<script>
+		let arrayAutomatico = [];
+		let arrayPares = [];
+		let arrayImpares = [];
+		function rellenarAutoArray() {
+			arrayAutomatico = []
+			cantidadNumeros = document.getElementById("numeros").value
+			parrafoArray = document.getElementById("rellenarAutomaticamente")
+			for (let index = 0; index < cantidadNumeros; index++) {
+				arrayAutomatico.push(Math.floor(Math.random() * 100) + 1)
+			}
+			parrafoArray.innerHTML = arrayAutomatico
+		}
+
+		function separarArray() {
+			if (arrayPares.length == 0 && arrayImpares.length == 0) {
+				arrayAutomatico.forEach(
+					numero => {
+						if (numero % 2 == 0) {
+							arrayPares.push(numero)
+						} else {
+							arrayImpares.push(numero)
+						}
+					}
+				)
+				arrayPares.sort((a, b) => { return a - b });
+				arrayImpares.sort((a, b) => { return a - b });
+			}
+		}
+
+		function ordenarPares() {
+			separarArray()
+			const indiceArrayParesDividirlo = Math.round(arrayPares.length / 2)
+			const arrayParesInicio = arrayPares.slice(0, indiceArrayParesDividirlo)
+			const arrayParesFinal = arrayPares.slice(indiceArrayParesDividirlo)
+			arrayOrdenadoPares = [...arrayParesInicio, ...arrayImpares, ...arrayParesFinal]
+			document.getElementById("paresPrimero").innerHTML = arrayOrdenadoPares
+			document.getElementById("inicioPares").innerHTML = "Primera mitad pares [ " + arrayParesInicio + " ]"
+			document.getElementById("medioImpares").innerHTML = "Impares [ " + arrayImpares + " ]"
+			document.getElementById("finalPares").innerHTML = "Segunda mitad pares [ " + arrayParesFinal + " ]"
+		}
+
+		function ordenarImpares() {
+			separarArray()
+			const indiceArrayImparesDividirlo = Math.round(arrayImpares.length / 2)
+			const arrayImparesInicio = arrayImpares.slice(0, indiceArrayImparesDividirlo)
+			const arrayImparesFinal = arrayImpares.slice(indiceArrayImparesDividirlo)
+			arrayOrdenadoImpares = [...arrayImparesInicio, ...arrayPares, ...arrayImparesFinal]
+			document.getElementById("imparesPrimero").innerHTML = arrayOrdenadoImpares
+			document.getElementById("inicioImpares").innerHTML = "Primera mitad impares [ " + arrayImparesInicio + " ]"
+			document.getElementById("medioPares").innerHTML = "Pares [ " + arrayPares + " ]"
+			document.getElementById("finalImpares").innerHTML = "Segunda mitad impares [ " + arrayImparesFinal + " ]"
+		}
+	</script>
+</head>
+
+<body>
+	<h1>Separar un array en pares e impares</h1>
+	<label for="numeros">Elige el numero de elementos del array</label>
+	<input type="text" name="numeros" id="numeros">
+	<button onclick="rellenarAutoArray()">Rellenar el array aleatoriamente</button>
+	<p id="rellenarAutomaticamente"></p>
+	<label for="mostrarPares">Mostrar el array con los numeros pares al principio y al final</label>
+	<button onclick="ordenarPares()">Mostrar el array con los numeros pares al principio y al final</button>
+	<p id="paresPrimero"></p>
+	<p id="inicioPares"></p>
+	<p id="medioImpares"></p>
+	<p id="finalPares"></p>
+	<label for="mostrarImpares">Mostrar el array con los numeros impares al principio y al final</label>
+	<button onclick="ordenarImpares()">Mostrar el array con los numeros impares al principio y al final</button>
+	<p id="imparesPrimero"></p>
+	<p id="inicioImpares"></p>
+	<p id="medioPares"></p>
+	<p id="finalImpares"></p>
+</body>
+
+</html>

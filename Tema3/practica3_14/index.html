@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 14</title>
+    <script>
+        function cambiarEtiquetaTextContext() {
+            const textoCambiar = document.getElementById("cambiarEtiquetaTextContext").value
+            let textoAntiguo = document.getElementsByTagName("p")[0]
+            textoAntiguo.textContent = textoCambiar
+        }
+        function cambiarEtiquetaHTML() {
+            const textoCambiar = document.getElementById("cambiarEtiquetaTextContext").value
+            let textoAntiguo = document.getElementsByTagName("p")[0]
+            textoAntiguo.innerHTML = textoCambiar
+        }
+        function cambiarIDTextContext() {
+            const textoCambiar = document.getElementById("cambiarEtiquetaTextContext").value
+            let textoAntiguo = document.getElementById("parrafo2")
+            textoAntiguo.textContent = textoCambiar
+        }
+        function cambiarIDHTML() {
+            const textoCambiar = document.getElementById("cambiarEtiquetaTextContext").value
+            let textoAntiguo = document.getElementById("parrafo2")
+            textoAntiguo.innerHTML = textoCambiar
+        }
+    </script>
+    <style>
+        #parrafo1{
+            background-color: aqua;
+        }
+        #parrafo2{
+            background-color: chartreuse;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>Por etiquetas</h2>
+    <label for="cambiarEtiquetaTextContext">Cambia el texto con textContent</label>
+    <input type="text" name="cambiarEtiquetaTextContext" id="cambiarEtiquetaTextContext"><br>
+    <button onclick="cambiarEtiquetaTextContext()">Cambiar con textContext</button><br>
+    <label for="cambiarEtiquetaHTML">Cambia el texto con innerHTML</label>
+    <input type="text" name="cambiarEtiquetaHTML" id="cambiarEtiquetaHTML"><br>
+    <button onclick="cambiarEtiquetaHTML()">Cambiar con innerHTML</button><br>
+    <p id="parrafo1">Este es el texto que cambiara en el primer caso.</p>
+    <h2>Por ID</h2>
+    <label for="cambiarIDTextContext">Cambia el texto con textContent</label>
+    <input type="text" name="cambiarIDTextContext" id="cambiarIDTextContext"><br>
+    <button onclick="cambiarIDTextContext()">Cambiar con textContext</button><br>
+    <label for="cambiarIDHTML">Cambia el texto con innerHTML</label>
+    <input type="text" name="cambiarIDHTML" id="cambiarIDHTML"><br>
+    <button onclick="cambiarIDHTML()">Cambiar con innerHTML</button><br>
+    <p id="parrafo2">Este es el texto que cambiara en el segundo caso.</p>
+</body>
+
+</html>

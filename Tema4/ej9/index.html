@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tema 4 Ejercicio 9</title>
+	<style>
+		textarea {
+			width: 99%;
+		}
+
+		p:hover {
+			cursor: pointer;
+			background-color: aqua;
+		}
+	</style>
+	<script>
+		const caracteresEspeciales = new Map([["Espacio", " "], ["Salto de linea", "\n"], ["Tabulador", "\n"], ["Caracter vacio", "\u{200b}"]]);
+
+		function obtenerCaracteresSet() {
+			const textoUsuario = document.getElementById("textoUsuario").value
+			const setTextoUsuario = new Set(textoUsuario)
+			const numeroCaracteres = setTextoUsuario.size
+			document.getElementById("mostrarCaracteres").innerHTML =
+				`<p>Los caracteres son: [ ${[...setTextoUsuario]} ]</p>
+                <p>Y hay ${numeroCaracteres} caracteres en total.</p>`
+		}
+
+		function contarCaracteres() {
+			const textoUsuario = document.getElementById("textoUsuario").value.split("")
+			const mapaCaracteres = new Map();
+			textoUsuario.forEach(element => {
+				if (mapaCaracteres.has(element)) {
+					cantidad = mapaCaracteres.get(element)
+					cantidad++
+					mapaCaracteres.set(element, cantidad);
+				} else {
+					mapaCaracteres.set(element, 1);
+				}
+			});
+			// Pregunta para el profesor: no se si es mejor hacer el forEach() en el mapa pequeño y
+			// el has() en el mapa grande o al reves. No se de que forma es mas eficiente.
+			caracteresEspeciales.forEach((valor, key) => {
+				if (mapaCaracteres.has(valor)) {
+					mapaCaracteres.set(key, mapaCaracteres.get(valor));
+					mapaCaracteres.delete(valor);
+				}
+			})
+			let textoMostrar = ""
+			mapaCaracteres.forEach((valor, key) => {
+				textoMostrar += `<p>${key} => ${valor} ${valor == 1 ? "vez" : "veces"}</p>`
+			});
+			document.getElementById("numeroCaracteres").innerHTML = textoMostrar
+		}
+	</script>
+</head>
+
+<body>
+	<textarea name="textoUsuario" id="textoUsuario" cols="30" rows="10"
+		placeholder="Introduzca su texto"></textarea><br>
+	<button onclick="obtenerCaracteresSet()">Obtener los caracteres y la cantidad que hay</button><br>
+	<p id="mostrarCaracteres"></p>
+	<button onclick="contarCaracteres()">Obtener el número de caracteres</button>
+	<div id="numeroCaracteres"></div>
+	<!-- Lorem ipsum dolor, sit amet consectetur adipisicing elit. Officia repudiandae consectetur deserunt, quod aut nostrum facilis incidunt, delectus commodi culpa eos ipsam in dignissimos veniam cupiditate eum! Eligendi, quaerat eveniet! -->
+</body>
+
+</html>

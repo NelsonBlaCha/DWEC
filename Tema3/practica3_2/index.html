@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 2</title>
+    <script>
+        const jefa = {
+            nombre: "Marina",
+            apellidos: "Lopez Fernandez",
+            DNI: "10222333X",
+            andar: function () {
+                return (`${this.nombre} ${this.apellidos} esta andando`)
+            },
+            correr: function () {
+                return (`${this.nombre} ${this.apellidos} esta corriendo`)
+            }
+        }
+        const coche = {
+            marca: "Porche",
+            modelo: "Challenge",
+            caballos: 999,
+            acelerar: function () {
+                return (`El ${this.marca} ${this.modelo} esta acelerando`)
+            },
+            frenar: function () {
+                return (`El ${this.marca} ${this.modelo} esta frenando`)
+            }
+        }
+        function mostrarJefa() {
+            document.getElementById("parrafo1").innerHTML = "El nombre es " + jefa.nombre
+            document.getElementById("parrafo2").innerHTML = "Los apellidos son " + jefa.apellidos
+            document.getElementById("parrafo3").innerHTML = "El DNI es " + jefa.DNI
+            document.getElementById("parrafo4").innerHTML = jefa.andar()
+            document.getElementById("parrafo5").innerHTML = jefa.correr()
+        }
+        function mostrarCoche() {
+            document.getElementById("parrafo1").innerHTML = "La marca es " + coche.marca
+            document.getElementById("parrafo2").innerHTML = "El modelo es " + coche.modelo
+            document.getElementById("parrafo3").innerHTML = "Tiene " + coche.caballos + " caballos"
+            document.getElementById("parrafo4").innerHTML = coche.acelerar()
+            document.getElementById("parrafo5").innerHTML = coche.frenar()
+        }
+        function ocultar() {
+            document.getElementById("parrafo1").innerHTML = ""
+            document.getElementById("parrafo2").innerHTML = ""
+            document.getElementById("parrafo3").innerHTML = ""
+            document.getElementById("parrafo4").innerHTML = ""
+            document.getElementById("parrafo5").innerHTML = ""
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="mostrarJefa()">Mostar jefa</button>
+    <button onclick="mostrarCoche()">Mostrar coche</button>
+    <button onclick="ocultar()">Ocultar</button>
+    <p id="parrafo1"></p>
+    <p id="parrafo2"></p>
+    <p id="parrafo3"></p>
+    <p id="parrafo4"></p>
+    <p id="parrafo5"></p>
+</body>
+
+</html>

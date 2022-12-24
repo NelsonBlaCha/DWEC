@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 10</title>
+    <script>
+        function mostrarWidth() {
+            document.getElementById("mostrarWidth").innerHTML = ": " + screen.width + " px"
+        }
+        function mostrarHeight() {
+            document.getElementById("mostrarHeight").innerHTML = ": " + screen.height + " px"
+        }
+        function mostrarWidthAvaible() {
+            document.getElementById("mostrarWidthAvaible").innerHTML = ": " + screen.availWidth + " px"
+        }
+        function mostrarHeightAvaible() {
+            document.getElementById("mostrarHeightAvaible").innerHTML = ": " + screen.availHeight + " px"
+        }
+        function depthColor() {
+            document.getElementById("depthColor").innerHTML = ": " + screen.colorDepth + " bits"
+        }
+        function orientation() {
+            document.getElementById("orientation").innerHTML = ": " + screen.orientation.type
+        }
+    </script>
+</head>
+
+<body>
+    <p>Ancho de la pantalla<span id="mostrarWidth"></span></p>
+    <button onclick="mostrarWidth()">Mostrar</button><br>
+
+    <p>Alto de la pantalla<span id="mostrarHeight"></span></p>
+    <button onclick="mostrarHeight()">Mostrar</button><br>
+
+    <p>Ancho disponible de la pantalla<span id="mostrarWidthAvaible"></span></p>
+    <button onclick="mostrarWidthAvaible()">Mostrar</button><br>
+
+    <p>Alto disponible de la pantalla<span id="mostrarHeightAvaible"></span></p>
+    <button onclick="mostrarHeightAvaible()">Mostrar</button><br>
+
+    <p>Profundidad de color<span id="depthColor"></span></p>
+    <button onclick="depthColor()">Mostrar</button><br>
+
+    <p>Orientación<span id="orientation"></span></p>
+    <button onclick="orientation()">Mostrar</button><br>
+</body>
+
+</html>

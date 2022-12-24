@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Tema 4 Ejercicio 8</title>
+	<script>
+		function buscarTexto() {
+			const stringUsuario = document.getElementById("stringBuscar").value
+			const textoUsuario = document.getElementById("textoUsuario").value
+			const regEx = eval("/" + stringUsuario + "/gi")
+			const arrayusuario = textoUsuario.match(regEx)
+			const numeroCoincidencias = arrayusuario.length
+			document.getElementById("stringBuscado").innerHTML =
+				"[ " +
+				arrayusuario +
+				" ] Se han encontrado " +
+				numeroCoincidencias +
+				" coincidencias."
+		}
+
+		function separarTexto() {
+			const stringUsuario = document.getElementById("textoUsuario").value
+			const regEx = /[\/\"\'\`\.,;\t\s?¿¡!)(][\s]*/i;
+			const arraySinPuntuacion = stringUsuario.split(regEx)
+			arraySinPuntuacion.pop()
+			document.getElementById("arraySinPuntuacion").value = arraySinPuntuacion
+		}
+
+		function ordenarTexto() {
+			const stringUsuario = document.getElementById("textoUsuario").value
+			const regEx = /[\/\"\'\`\.,;\t\s?¿¡!][\s]*/i;
+			const arraySinPuntuacion = stringUsuario.split(regEx)
+			arraySinPuntuacion.pop()
+			arraySinPuntuacion.sort((a, b) => { return a.localeCompare(b) });
+			document.getElementById("arrayOrdenado").value = arraySinPuntuacion
+		}
+
+	</script>
+</head>
+
+<body>
+	<h1>Jugando con strings</h1>
+	<p>Introduzca el texto</p>
+	<textarea name="textoUsuario" id="textoUsuario" cols="30" rows="10"></textarea>
+	<div>
+		<label for="stringBuscar">Introduzca la palabra o cadena a buscar</label>
+		<input type="text" name="stringBuscar" id="stringBuscar">
+		<button onclick="buscarTexto()">Búsqueda de palabra/cadena</button>
+		<p id="stringBuscado"></p>
+	</div>
+	<div>
+		<label for="">Mostrar el texto en un array sin signos de puntuacion</label>
+		<button onclick="separarTexto()">Mostrar array</button><br>
+		<textarea name="arraySinPuntuacion" id="arraySinPuntuacion" cols="30" rows="10"></textarea>
+	</div>
+	<div>
+		<label for="">Mostrar el array ordenado</label>
+		<button onclick="ordenarTexto()">Mostrar el array ordenado</button><br>
+		<textarea name="arrayOrdenado" id="arrayOrdenado" cols="30" rows="10"></textarea>
+	</div>
+</body>
+
+</html>

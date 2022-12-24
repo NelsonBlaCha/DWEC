@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 11</title>
+    <script>
+        function mostarInformacion() {
+            document.getElementById("href").innerHTML = "HREF: " + window.location.href
+            document.getElementById("hostname").innerHTML = "Hostname: " + window.location.hostname
+            document.getElementById("pathname").innerHTML = "Pathname: " + window.location.pathname
+            document.getElementById("puerto").innerHTML = "Protocolo: " + window.location.port
+            document.getElementById("protocolo").innerHTML = "Protocolo: " + window.location.protocol
+        }
+        function irAAssign() {
+            window.location.assign("https://www.google.com")
+        }
+        function irAReplace() {
+            window.location.replace("https://www.google.com")
+        }
+    </script>
+</head>
+
+<body>
+    <button onclick="mostarInformacion()">Mostrar</button><br>
+    <p id="href"></p>
+    <p id="hostname"></p>
+    <p id="pathname"></p>
+    <p id="puerto"></p>
+    <p id="protocolo"></p>
+    <button onclick="irAAssign()">Ir a Google</button><br>
+    <button onclick="irAReplace()">Ir a Google sin poder volver</button><br>
+</body>
+
+</html>

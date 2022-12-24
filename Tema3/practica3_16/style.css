@@ -1,0 +1,13 @@
+.parrafo33 {
+    color: rgb(211, 41, 138);
+    border: dotted;
+}
+
+.div3Alt {
+    width: 600px;
+    height: 200px;
+    border: solid 5px rgb(96, 170, 178);
+    background-color: rgb(96, 170, 178);
+    position: relative;
+    margin-top: 5px;
+}

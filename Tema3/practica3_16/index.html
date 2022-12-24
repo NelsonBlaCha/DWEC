@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 16</title>
+    <style>
+        .div1 {
+            width: 40%;
+            background-color: red;
+            height: 150px;
+        }
+
+        .div2 {
+            width: 40%;
+            background-color: green;
+            height: 150px;
+        }
+
+        .div3 {
+            width: 40%;
+            background-color: cyan;
+            height: 150px;
+        }
+
+        .parrafo22 {
+            color: rgb(11, 41, 138);
+            border: dotted;
+        }
+
+        .div2Alt {
+            width: 60%;
+            border: solid 5px rgb(196, 170, 178);
+            background-color: rgb(96, 170, 0);
+        }
+    </style>
+    <script>
+        function cambiarDiv1SetAttribute() {
+            const container = document.getElementById("div1")
+            container.setAttribute("style", "width: 50%; border: solid 5px rgb(96, 170, 178); background-color: rgb(96, 170, 178)")
+        }
+        function cambiarParrafo1SetAttribute() {
+            const parrafo1 = document.getElementById("parrafo1")
+            parrafo1.setAttribute("style", "color: rgb(211, 41, 138); border: dotted")
+        }
+        function cambiarDiv2ClassName() {
+            const container = document.getElementById("div2")
+            container.className = "div2Alt"
+        }
+        function cambiarParrafo2ClassName() {
+            const parrafo1 = document.getElementById("parrafo2")
+            parrafo1.className = "parrafo22"
+        }
+        function cambiarDiv3CSSExterno() {
+            const container = document.getElementById("div3")
+            const link = document.createElement("link")
+            link.setAttribute("rel", "stylesheet")
+            link.setAttribute("href", "./style.css")
+            document.head.appendChild(link)
+            container.className = "div3Alt"
+        }
+        function cambiarParrafo3CSSExterno() {
+            const parrafo1 = document.getElementById("parrafo3")
+            const link = document.createElement("link")
+            link.setAttribute("rel", "stylesheet")
+            link.setAttribute("href", "./style.css")
+            document.head.appendChild(link)
+            parrafo1.className = "parrafo33"
+        }
+        function cambiarDiv4CrearStyle() {
+            const container = document.getElementById("div4")
+            const estilo = document.createElement("style")
+            const texto = document.createTextNode(".div4 { width: 75%; background-color: yellow; height: 200px; }")
+            estilo.appendChild(texto)
+            document.head.appendChild(estilo)
+        }
+        function cambiarParrafo4CrearStyle() {
+            const parrafo1 = document.getElementById("parrafo4")
+            const estilo = document.createElement("style")
+            const texto = document.createTextNode(".parrafo4 { color: rgb(11, 41, 138); border: dotted; }")
+            estilo.appendChild(texto)
+            document.head.appendChild(estilo)
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div1" class="div1 claseEj17">
+        <h3>Cambiando estilos con setAttribute()</h3>
+        <button onclick="cambiarDiv1SetAttribute()">Cambia Div1</button>
+        <button onclick="cambiarParrafo1SetAttribute()">Cambia Parrafo 1</button>
+        <p id="parrafo1">Parrafo 1</p>
+    </div>
+    <div id="div2" class="div2 ej17Clase1 ej17Clase2">
+        <h3>Cambiando estilos con className</h3>
+        <button onclick="cambiarDiv2ClassName()">Cambia Div2</button>
+        <button onclick="cambiarParrafo2ClassName()">Cambia Parrafo 2</button>
+        <p id="parrafo2">Parrafo 2</p>
+    </div>
+    <div id="div3" class="div3">
+        <h3>Cambiando estilos con CSS externo</h3>
+        <button onclick="cambiarDiv3CSSExterno()">Cambia Div3</button>
+        <button onclick="cambiarParrafo3CSSExterno()">Cambia Parrafo 3</button>
+        <p id="parrafo3">Parrafo 3</p>
+    </div>
+    <div id="div4" class="div4 claseEjercicio17 claseEjercicio17 claseEjercicio18">
+        <h3>Cambiando estilos con CSS externo</h3>
+        <button onclick="cambiarDiv4CrearStyle()">Cambia Div4</button>
+        <button onclick="cambiarParrafo4CrearStyle()">Cambia Parrafo 4</button>
+        <p id="parrafo4" class="parrafo4">Parrafo 4</p>
+    </div>
+</body>
+
+</html>

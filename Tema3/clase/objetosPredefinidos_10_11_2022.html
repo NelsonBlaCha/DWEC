@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 16</title>
+    <script>
+        function init() {
+            const parrafo = document.getElementById("parrafo")
+            parrafo.style.backgroundColor = "green"
+            parrafo.style.color = "yellow"
+            listaClases = parrafo.classList
+            listaClases.forEach((y, index) => console.log(`Index: ${index} -- Valor: ${y}`))
+            div.classList.toggle("visible", true); // Si es true, añade la clase aunque la tenga, y si no la tiene la añade
+            div.classList.toggle("visible", i < 10); // Es un booleano, por lo que podemos darle logica
+        }
+    </script>
+</head>
+
+<body>
+    <p id="parrafo" class="clase1 clase2 clase3">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptas
+        exercitationem nostrum, aut
+        officiis rem
+        placeat voluptatum commodi obcaecati ipsum nemo velit. Voluptatibus, animi ipsum consequatur quod earum tempora
+        sint quos.
+        Error maxime, sint nobis laboriosam adipisci earum explicabo iure eius ipsum ad molestiae repellendus. Ea
+        ducimus quos possimus, molestias aut, sit magnam voluptatibus sed tenetur facilis qui repudiandae id
+        necessitatibus?
+        Facere a dicta quas sit magni, animi reprehenderit nam necessitatibus nisi debitis numquam totam maiores at
+        dolorum et commodi minus, soluta obcaecati cumque pariatur quasi id accusantium modi! Minima, voluptates!</p>
+    <button onclick="init()">Enviar</button>
+</body>
+
+</html>

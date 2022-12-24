@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4 Ejercicio 1</title>
+    <script>
+        // Factorial
+        function recogerNumeroFactorial() {
+            inicioTiempo = Date.now()
+            num = document.getElementById("numero1").value
+            calcularFactorial(num)
+            finalTiempo = Date.now()
+            diferenciaTiempo = finalTiempo - inicioTiempo
+            console.log("Diferencia de tiempo: " + diferenciaTiempo);
+        }
+        function calcularFactorial(num) {
+            numero = num
+            factorial = 1
+            for (let i = 1; i <= num; i++) {
+                factorial *= numero
+                --numero
+                console.log(factorial);
+            }
+            console.log("Factorial del numero " + num + " es " + factorial);
+        }
+        // Fibonacci CON recursividad
+        function recogerNumero2FibonacciRecursiva() {
+            inicioTiempo = Date.now()
+            const nTerms = document.getElementById("numero2").value
+            if (nTerms <= 0) {
+                console.log('Enter a positive integer.');
+            }
+            else {
+                for (let i = 0; i < nTerms; i++) {
+                    parcialTiempo = Date.now()
+                    diferenciaTiempoParcial = parcialTiempo - inicioTiempo
+                    console.log(`Tiempo: ${diferenciaTiempoParcial / 1000} s`);
+                    console.log(`Interaccion numero: ${i}`);
+                    console.log(fibonacciRecursiva(i));
+                }
+            }
+            finalTiempo = Date.now()
+            diferenciaTiempo = finalTiempo - inicioTiempo
+            console.log("Diferencia de tiempo: " + diferenciaTiempo);
+        }
+        function fibonacciRecursiva(num) {
+            if (num < 2) {
+                return num;
+            }
+            else {
+                return fibonacciRecursiva(num - 1) + fibonacciRecursiva(num - 2);
+            }
+        }
+        // Fibonacci SIN recursividad
+        function recogerNumero2Fibonacci() {
+            inicioTiempo = Date.now()
+            num = document.getElementById("numero3").value
+            fibonacci(num)
+            finalTiempo = Date.now()
+            diferenciaTiempo = finalTiempo - inicioTiempo
+            console.log("Diferencia de tiempo: " + diferenciaTiempo);
+        }
+        function fibonacci(num) {
+            let n1 = 0, n2 = 1, nextTerm;
+            console.log('Fibonacci Series:');
+            for (let i = 1; i <= num; i++) {
+                console.log(n1);
+                nextTerm = n1 + n2;
+                n1 = n2;
+                n2 = nextTerm;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="number" name="numero1" id="numero1">
+    <button onclick="recogerNumeroFactorial()">Factorial</button><br>
+    <input type="number" name="numero2" id="numero2">
+    <button onclick="recogerNumero2FibonacciRecursiva()">Fibonacci con recursividad</button><br>
+    <input type="number" name="numero3" id="numero3">
+    <button onclick="recogerNumero2Fibonacci()">Fibonacci</button><br>
+</body>
+
+</html>

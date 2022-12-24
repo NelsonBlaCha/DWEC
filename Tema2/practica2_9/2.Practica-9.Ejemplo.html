@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <style>
+      body {
+        text-align: center;
+      }
+      h1 {
+        color: blue;
+        font-family: "Lucida Sans", "Lucida Sans Regular";
+      }
+      h2 {
+        color: green;
+      }
+      h3 {
+        font-size: 1.5em;
+      }
+    </style>
+    <title>2.Practica-9</title>
+    <script>
+      function seleccion(menu) {
+        if (parseInt(menu)) {
+          document.getElementById("mensaje").innerHTML = "Menú " + menu;
+        } else {
+          document.getElementById("mensaje").innerHTML = "Error";
+        }
+      }
+
+      mensaje = prompt("Introduzca valor");
+      seleccion(parseInt(mensaje));
+    </script>
+    <script src="./javascript.js" defer></script>
+  </head>
+  <body>
+    <h1>Restaurante Perico</h1>
+    <div>
+      <h2>Menú 1</h2>
+      <p>1. Trucha marinada con salsa de albahaca y champiñones al ajillo</p>
+      <p>2. Judías verdes con tomate y jamón y pechuga de pollo a la plancha</p>
+      <p>Postre. Tarta Vianner</p>
+      <button onclick="seleccion('1')">Menú 1</button>
+    </div>
+    <div>
+      <h2>Menú 2</h2>
+      <p>1. Berenjenas agridulces con hamburguesa de ternera a la plancha</p>
+      <p>2. Sopa de huevo rápida y currywurst</p>
+      <p>Postre. Gelato</p>
+      <button onclick="seleccion('2')">Menú 2</button>
+    </div>
+    <div>
+      <h2>Menú 3</h2>
+      <p>
+        1. Lentejas con calabaza en olla exprés, sepia a la plancha y naranja de
+        postre
+      </p>
+      <p>2. Bonito marinado al curry con calabacín a la plancha</p>
+      <p>Postre. Tiramisú</p>
+      <button onclick="seleccion('3')">Menú 3</button>
+    </div>
+    <div>
+      <h2>Introduzca el numero de menú</h2>
+      <input type="number" name="menu" id="entrada" value="1" min="1" />
+      <button onclick="seleccion(document.getElementById('entrada').value)">
+        Enviar
+      </button>
+    </div>
+    <br /><br />
+    <div>
+      <h2>
+        Usted ha elegido el menú número:
+        <h3 id="mensaje"></h3>
+      </h2>
+    </div>
+  </body>
+</html>

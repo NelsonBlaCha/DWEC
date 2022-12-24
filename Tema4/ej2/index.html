@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 4 Practica 2</title>
+    <script>
+        function mediaConString(...n) {
+            valor = 0
+            n.forEach(element => {
+                valor += element;
+            });
+            cantidad = n.length
+            return valor / cantidad
+        }
+        function calcularMedia() {
+            numeros = document.getElementById("numeros").value
+            console.log(numeros)
+            mediaValores = eval("mediaConString(" + numeros + ")")//mediaConString(numeros)
+            parrafo = document.getElementById("parrafo")
+            parrafo.innerHTML = mediaValores;
+        }
+        function separar(...n) {
+            console.log(n);
+            n.forEach(element => {
+                console.log(element);
+            });
+        }
+        function separarParrafo() {
+            parrafo = document.getElementById("parrafo2").innerHTML
+            console.log(parrafo)
+            a = 6
+            eval("separar(" + parrafo + ")")
+        }
+    </script>
+</head>
+
+<body>
+    <h1>Media</h1>
+    <input type="text" name="numeros" id="numeros"><br>
+    <button onclick="calcularMedia()">Calcular media</button>
+    <p id="parrafo"></p>
+    <button onclick="separarParrafo()">Calcular media</button>
+    <p id="parrafo2">1,2,3,4,5,a
+    </p>
+</body>
+
+</html>

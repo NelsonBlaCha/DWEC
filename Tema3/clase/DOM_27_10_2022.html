@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dia 27_10_2022</title>
+    <script>
+        function numeroEntradas() {
+            document.getElementById("numeroEntradas").innerHTML = ": " + history.length
+        }
+        function init() {
+            console.log(document.getElementById("parrafo").nodeType);
+            console.log(document.getElementById("parrafo").nodeName);
+            console.log(document.getElementsByTagName("p")[1]); // Elijo el segundo parrafo
+            console.log(document.getElementsByTagName("p")[1].childNodes[0].nodeValue); // Elijo el segundo parrafo, primer elemento y obtengo su valor
+        }
+        // Creamos elemento, le damos valor, y lo metemos en el DOM
+        const formulario = document.createElement("form") // p, div, etc
+        let titulo = document.createElement("tittle"); // Creamos el elemento
+        titulo.textContent = "Mi nuevo título de formulario" // Le damos valor
+        const texto = document.createTextNode("formulario a mostrar en un rato") // Texto puro, sin etiquetas
+        formulario.appendChild(titulo) // Asignamos el texto al formulario
+        // Borrar elemento
+        formulario.removeChild (titulo)
+    </script>
+</head>
+
+<body>
+    <p id="parrafo">Numero de entradas del historial<span id="numeroEntradas"></span></p>
+    <p id="parrafo2">Numero de <strong>Grande</strong>entradas del historial<strong>Grande</strong></p>
+    <button onclick="numeroEntradas()">Mostrar</button><br>
+</body>
+
+</html>

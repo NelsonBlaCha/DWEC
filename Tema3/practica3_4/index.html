@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3. Practica 4</title>
+</head>
+<script>
+    function Coches(marca, modelo, velocidad) {
+        this.marca = marca
+        this.modelo = modelo
+        this.velocidad = velocidad
+        this.acelerar = () => `El ${this.marca} ${this.modelo} ha acelerado hasta ${this.velocidad}`
+    }
+    // Añadimos un metodo y un atributo desde el constructor
+    Coches.prototype.decelerar = function () { `El ${this.marca} ${this.modelo} ha decelerado` }
+    Coches.prototype.precio = this.precio
+    // 
+    const coche1 = new Coches("Porche", "Challenge", 120)
+    coche1.precio = 15000
+    const coche2 = new Coches("BMW", "M3", 110)
+    function mostrarCoche(objeto) {
+        for (let key in objeto) {
+            alert(`${key} tiene el valor ${objeto[key]}`)
+        }
+        alert(`El objeto proviene de la clase: ${objeto.constructor.name}`)
+    }
+    function nuevoObjeto() {
+        const marca = prompt("¿Cual es la marca del coche?")
+        const modelo = prompt("¿Cual es el modelo del coche?")
+        const velocidad = prompt("¿A que velocidad circula el coche?")
+        const cocheNuevo = new Coches(marca, modelo, velocidad)
+        const propiedadNueva = prompt("¿Cual es el nombre de la nueva propiedad?")
+        const valorPropiedadNueva = prompt("¿Cual es el valor de la nueva propiedad?")
+        Coches.prototype[propiedadNueva];
+        cocheNuevo[propiedadNueva] = valorPropiedadNueva;
+        mostrarCoche(cocheNuevo)
+    }
+    const coche3 = new Coches("Ferrari", "Modena", 55)
+    function agregarACoche3() {
+        const propiedadNueva = prompt("¿Cual es el nombre de la nueva propiedad?")
+        const valorPropiedadNueva = prompt("¿Cual es el valor de la nueva propiedad?")
+        Coches.prototype[propiedadNueva];
+        coche3[propiedadNueva] = valorPropiedadNueva;
+        mostrarCoche(coche3)
+    }
+</script>
+
+<body>
+    <button onclick="mostrarCoche(coche1)">Mostrar coche 1</button>
+    <button onclick="mostrarCoche(coche2)">Mostrar coche 2</button>
+    <button onclick="nuevoObjeto()">Nuevo coche</button>
+    <button onclick="agregarACoche3()">Agregar a coche 3</button>
+</body>
+
+</html>

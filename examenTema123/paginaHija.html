@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina hija</title>
+    <script>
+        function validarColorIntroducido() {
+            const colorIntroducido = document.getElementById("colorSemaforo").value.toLowerCase()
+            mensajeColor = document.getElementById("mensajeColor")
+            switch (colorIntroducido) {
+                case "rojo":
+                case "roja":
+                    window.opener.encenderBombillaHija('colorRojo')
+                    mensajeColor.innerHTML = "El semáforo se encenderá de color rojo"
+                    break;
+                case "amarillo":
+                case "amarilla":
+                    window.opener.encenderBombillaHija('colorAmarillo')
+                    mensajeColor.innerHTML = "El semáforo se encenderá de color amarillo"
+                    break;
+                case "verde":
+                    window.opener.encenderBombillaHija('colorVerde')
+                    mensajeColor.innerHTML = "El semáforo se encenderá de color verde"
+                    break;
+                default:
+                    mensajeColor.innerHTML = ""
+                    window.opener.alert("El color valido no es correcto")
+                    break;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="text" name="colorSemaforo" id="colorSemaforo">
+    <label for="colorSemaforo">Enciende luz en padre</label>
+    <button onclick="validarColorIntroducido()">Cambia color padre</button>
+    <p id="mensajeColor"></p>
+</body>
+
+</html>

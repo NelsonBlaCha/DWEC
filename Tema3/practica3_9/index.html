@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 3 Practica 9</title>
+    <script>
+        function recorrerPlugins() {
+            plugins = navigator.plugins
+            for (const element in plugins) {
+                if (plugins[element].name == undefined) continue
+                console.log(plugins[element].name);
+            }
+        }
+        function mostrarCookies() {
+            document.getElementById("mostrarCookies").innerHTML = navigator.cookieEnabled ? ": SI" : ": NO"
+        }
+        function mostrarIdioma() {
+            document.getElementById("idioma").innerHTML = ": " + navigator.language
+        }
+        function mostrarOnline() {
+            document.getElementById("online").innerHTML = navigator.onLine ? " SI" : " NO"
+        }
+        function mostrarVersionNavegador() {
+            document.getElementById("versionNavegador").innerHTML = ": " + navigator.userAgent
+        }
+    </script>
+</head>
+
+<body>
+    <p>Recorrer plugins instalados (se muestran por consola)</p>
+    <button onclick="recorrerPlugins()">Recorrer</button><br>
+    <p>Cookies habilitadas<span id="mostrarCookies"></span></p>
+    <button onclick="mostrarCookies()">Mostrar</button><br>
+    <p>Idioma del navegador<span id="idioma"></span></p>
+    <button onclick="mostrarIdioma()">Mostrar</button><br>
+    <p>¿Navegador online?<span id="online"></span></p>
+    <button onclick="mostrarOnline()">Mostrar</button><br>
+    <p>Version del navegador<span id="versionNavegador"></span></p>
+    <button onclick="mostrarVersionNavegador()">Mostrar</button><br>
+</body>
+
+</html>

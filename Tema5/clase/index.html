@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema 5</title>
+    <script defer>
+        // Captura de eventos 1
+        let boton = document.getElementById("boton1");
+        boton.onclick = "mostrarMapInput()"
+        // Captura de eventos 2
+        let boton = document.getElementById("boton1");
+        boton.addEventListener("click", mostrarMapInput)
+
+        // No puedo capturar eventos de elementos que no estan en el DOM en ese momento.
+    </script>
+</head>
+
+<body>
+    <!-- Captura de eventos -->
+    <button onclick="mostrarMapInput()">Mostrar el Map con los caracteres introducidos</button>
+</body>
+
+</html>

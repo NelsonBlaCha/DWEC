@@ -1,13 +1,3 @@
-// function mostrarAlerta(evento) {
-//     elemento = evento.target
-//     while (elemento.localName != "body") {
-//         console.log("Soy el " + elemento.id);
-//         elemento = elemento.parentNode
-//     }
-// }
-// const divGeneral1 = document.getElementById("divGeneral1")
-// divGeneral1.addEventListener("click", mostrarAlerta)
-
 const botonActivar = document.getElementById("botonActivar")
 const boton1 = document.getElementById("boton1")
 const boton2 = document.getElementById("boton2")

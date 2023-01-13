@@ -16,14 +16,16 @@
         #divGeneral1,
         #divGeneral2,
         #divGeneral3,
-        #divGeneral4 {
+        #divGeneral4,
+        #divGeneral5 {
             flex: 20%;
         }
 
         #div1,
         #div11,
         #div111,
-        #div1111 {
+        #div1111,
+        #divElementoDinamico {
             position: relative;
             float: left;
             width: 300px;
@@ -43,7 +45,8 @@
 
         #p1,
         #p11,
-        #p111 {
+        #p111,
+        #p1111 {
             background-color: beige;
             width: fit-content;
             margin-left: 10px;
@@ -60,12 +63,17 @@
             margin-left: 10px;
         }
     </style>
-    <script src="./script.js" defer></script>
+    <script src="./funcionAlerta.js" defer></script>
+    <script src="./faseBurbuja.js" defer></script>
+    <script src="./faseCaptura.js" defer></script>
+    <script src="./anulacionEventos.js" defer></script>
+    <script src="./capturaEventosElementosDinamicos.js" defer></script>
+    <script src="./elementoDinamicoHTML.js" defer></script>
 </head>
 
 <body>
     <div id="divGeneral1">
-        <h2>Captura de elementos en fase burbuja</h2>
+        <h2 id="h1">Captura de elementos en fase burbuja</h2>
         <div id="div1">
             <div id="div2">
                 <p id="p1">Parrafo Interno</p>
@@ -74,7 +82,7 @@
         </div>
     </div>
     <div id="divGeneral2">
-        <h2>Captura de elementos en fase captura</h2>
+        <h2 id="h11">Captura de elementos en fase captura</h2>
         <div id="div11">
             <div id="div22">
                 <p id="p11">Parrafo Interno</p>
@@ -83,7 +91,7 @@
         </div>
     </div>
     <div id="divGeneral3">
-        <h2>Anulacion de eventos</h2>
+        <h2 id="h111">Anulacion de eventos en cualquier fase</h2>
         <div id="div111">
             <div id="div222">
                 <p id="p111">Parrafo Interno</p>
@@ -92,14 +100,21 @@
         </div>
     </div>
     <div id="divGeneral4">
-        <h2>Captura de en elementos dinamicos</h2>
+        <h2 id="h1111">Captura de eventos en elementos dinamicos</h2>
         <div id="div1111">
             <br><br><br>
-            <button>Activar captura de eventos</button><br><br><br>
-            <button>Boton 1</button><br><br><br>
-            <button>Boton 2</button><br><br><br>
-            <button>Boton 3</button><br><br><br>
-            <button>Desactivar captura de eventos</button>
+            <button id="botonActivar">Activar captura de eventos</button><br><br><br>
+            <button id="boton1">Boton 1</button><br><br><br>
+            <button id="boton2">Boton 2</button><br><br><br>
+            <button id="boton3">Boton 3</button><br><br><br>
+            <button id="botonDesactivar">Desactivar captura de eventos</button>
+        </div>
+    </div>
+    <div id="divGeneral5">
+        <h2 id="hElementoDinamico">Insertar un elemento de manera dinamica en el HTML</h2>
+        <div id="divElementoDinamico">
+            <br><br><br>
+            <button id="crearParrafo">Crear parrafo</button>
         </div>
     </div>
 </body>

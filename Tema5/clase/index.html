@@ -8,19 +8,44 @@
     <title>Tema 5</title>
     <script defer>
         // Captura de eventos 1
-        let boton = document.getElementById("boton1");
+        const boton = document.getElementById("boton1");
         boton.onclick = "mostrarMapInput()"
         // Captura de eventos 2
-        let boton = document.getElementById("boton1");
+        const boton = document.getElementById("boton1");
         boton.addEventListener("click", mostrarMapInput)
 
         // No puedo capturar eventos de elementos que no estan en el DOM en ese momento.
+
+        // Por defecto es false: fase de burbuja
+        boton.addEventListener("click", mostrarMapInput, false)
+        boton.addEventListener("click", mostrarMapInput, true)
+
+        // 
     </script>
 </head>
 
 <body>
-    <!-- Captura de eventos -->
     <button onclick="mostrarMapInput()">Mostrar el Map con los caracteres introducidos</button>
+    <div>
+        <button id="button1">Mostrar el Map 1</button><br>
+        <button id="button2">Mostrar el Map 2</button><br>
+        <button>Mostrar el Map 3</button>
+    </div>
 </body>
+<script>
+    // Lanzar eventos de otros elementos
+    const button1 = document.getElementById("button1");
+    const button2 = document.getElementById("button2");
+
+    button1.addEventListener("click", (evento) => {
+        alert("Boton 1 pulsado")
+        console.log(evento);
+    })
+
+    button2.addEventListener("click", () => {
+        const evento1 = new Event("click");
+        button1.dispatchEvent(evento1);
+    });
+</script>
 
 </html>

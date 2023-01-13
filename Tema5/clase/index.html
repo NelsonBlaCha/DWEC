@@ -15,6 +15,10 @@
         boton.addEventListener("click", mostrarMapInput)
 
         // No puedo capturar eventos de elementos que no estan en el DOM en ese momento.
+
+        // Por defecto es false: fase de burbuja
+        boton.addEventListener("click", mostrarMapInput, false)
+        boton.addEventListener("click", mostrarMapInput, true)
     </script>
 </head>
 

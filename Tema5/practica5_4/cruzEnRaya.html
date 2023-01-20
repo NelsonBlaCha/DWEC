@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5 Ejercicio 4</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #elementosArrastrables,
+        #elementosDestinoArrastres {
+            display: grid;
+            /* grid-template-columns: repeat(3 1fr); */
+            /* grid-template-rows: repeat(3 1fr); */
+            grid-template-columns: auto auto auto;
+            width: 100%;
+            height: 200px;
+            flex-wrap: wrap;
+        }
+
+        .contenedorArrastrable {
+            width: 145px;
+            height: 145px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .contenedor {
+            margin: 10px auto;
+            width: 150px;
+            height: 150px;
+            background-color: aqua;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EVENTOS DE ARRASTRE (FASE BURBUJA)</h1>
+    <div id="elementosArrastrables">
+        <img src="./cross-red-cross.png" alt="Cruz" draggable="true" id="cross-red-cross" class="contenedorArrastrable">
+        <img src="./cross-blue-cross.png" alt="Cruz" draggable="true" id="cross-blue-cross"
+            class="contenedorArrastrable">
+    </div>
+    <div id="elementosDestinoArrastres">
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+        <div class="contenedor"></div>
+    </div>
+</body>
+<script>
+    // Es el mismo codigo que antes pero se guarda la cruz que se arrastra en una variable y
+    // se crea una nueva imagen al soltarla en el contenedor.
+    // Tambien he creado una funcion comprobar que la clase sea un contenedor y que NO tenga el
+    // fondo amarillo, ya que al arrastrar una cruz sobre un contenedor con cruz cambiaba todos los fondos.
+    // 
+    const imagenRoja = document.getElementById("cross-red-cross");
+    const imagenAzul = document.getElementById("cross-blue-cross");
+    const elementosDestinoArrastres = document.getElementById("elementosDestinoArrastres");
+    let imagenQueSeMueve = "";
+
+    imagenRoja.addEventListener("dragstart", guardarCruzQueSeMueveEnVariable)
+    imagenAzul.addEventListener("dragstart", guardarCruzQueSeMueveEnVariable)
+    elementosDestinoArrastres.addEventListener("dragenter", cambiarColorFondoEntrar)
+    elementosDestinoArrastres.addEventListener("dragleave", cambiarColorFondoSalir)
+    elementosDestinoArrastres.addEventListener("dragover", evitarEventoMovimientoDentroDelContenedor)
+    elementosDestinoArrastres.addEventListener("drop", introducirCruzContenedor)
+
+    function guardarCruzQueSeMueveEnVariable(evento) {
+        imagenQueSeMueve = evento.target.id;
+    }
+
+    function cambiarColorFondoEntrar(evento) {
+        if (comprobarQueEsContenedorYTieneFondoAmarillo(evento)) {
+            evento.target.style.backgroundColor = "orange";
+        }
+    }
+
+    function cambiarColorFondoSalir(evento) {
+        if (comprobarQueEsContenedorYTieneFondoAmarillo(evento)) {
+            evento.target.style.backgroundColor = "aqua";
+        }
+    }
+
+    function comprobarQueEsContenedorYTieneFondoAmarillo(evento) {
+        if (evento.target.className == "contenedor" && evento.target.style.backgroundColor != "yellow") {
+            return true
+        }
+        return false
+    }
+
+    function evitarEventoMovimientoDentroDelContenedor(evento) {
+        evento.preventDefault();
+    }
+
+    function introducirCruzContenedor(evento) {
+        if (evento.target.className == "contenedor") {
+            evento.target.style.backgroundColor = "yellow";
+            const newImage = document.createElement("img");
+            newImage.src = `./${imagenQueSeMueve}.png`
+            newImage.className = "contenedorArrastrable"
+            evento.target.appendChild(image);
+        }
+    }
+</script>
+
+</html>

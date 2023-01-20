@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5 Ejercicio 4</title>
+    <style>
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        #elementosArrastrables,
+        #elementosDestinoArrastres {
+            display: flex;
+            width: 100%;
+            height: 300px;
+            border: 1px dotted black;
+        }
+
+        .contenedorArrastrable {
+            flex: 0 0 1;
+            width: 200px;
+            height: 200px;
+            margin: auto;
+            box-sizing: border-box;
+        }
+
+        .contenedor {
+            flex: 0 0 1;
+            width: 300px;
+            height: 300px;
+            margin-left: auto;
+            margin-right: auto;
+            background-color: aqua;
+            border: 2px solid black;
+            box-sizing: border-box;
+            text-align: center;
+            font-size: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EVENTOS DE ARRASTRE (FASE BURBUJA)</h1>
+    <div id="elementosArrastrables">
+        <img src="./cross-red-cross.gif" alt="Cruz" draggable="true" id="imagen" class="contenedorArrastrable">
+    </div>
+    <div id="elementosDestinoArrastres">
+        <div class="contenedor" id="contenedor1">Sueltame dentro!!!</div>
+        <div class="contenedor" id="contenedor2">Sueltame dentro!!!</div>
+        <div class="contenedor" id="contenedor3">Sueltame dentro!!!</div>
+    </div>
+</body>
+<script>
+    // He añadido los listeners al contenedor padre y luego hago una comprobacion
+    // para verificar que la cruz se suelta en los contenedores que yo quiero (clase contenedor).
+    // Esto lo hago porque:
+    // 1. Asi no tengo que crear un evento por cada uno de los contenedores.
+    // 2. Puedo añadir contenedores en el HTML y que siga funcionando sin cambiar el javascript
+    // 3. Evito un error que me aparecia al soltar la cruz en el mismo contenedor: fallaba el appendChild al soltarlo en el mismo contenedor.
+    // 4. Evito que la cruz mantenga el fondo anterior al arrastrarla entre contenedores.
+    const imagen = document.getElementById("imagen");
+    const elementosDestinoArrastres = document.getElementById("elementosDestinoArrastres");
+
+    elementosDestinoArrastres.addEventListener("dragenter", cambiarColorFondoEntrar)
+    elementosDestinoArrastres.addEventListener("dragleave", cambiarColorFondoSalir)
+    elementosDestinoArrastres.addEventListener("dragover", evitarEventoMovimientoDentroDelContenedor)
+    elementosDestinoArrastres.addEventListener("drop", introducirCruzContenedor)
+
+    function cambiarColorFondoEntrar(evento) {
+        if (evento.target.className == "contenedor") {
+            evento.target.style.backgroundColor = "orange";
+        }
+    }
+
+    function cambiarColorFondoSalir(evento) {
+        if (evento.target.className == "contenedor") {
+            evento.target.style.backgroundColor = "aqua";
+        }
+    }
+
+    function evitarEventoMovimientoDentroDelContenedor(evento) {
+        evento.preventDefault();
+    }
+
+    function introducirCruzContenedor(evento) {
+        if (evento.target.className == "contenedor") {
+            evento.target.style.backgroundColor = "yellow";
+            // Al seleccionar la imagen por su ID y hacer appendChild la borra de donde estaba y
+            // la añade al contenedor que queremos. No es necesario borrarla del origen manualmente.
+            evento.target.appendChild(imagen);
+        }
+    }
+
+</script>
+
+</html>

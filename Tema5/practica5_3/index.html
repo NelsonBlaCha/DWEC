@@ -47,6 +47,8 @@
 
     contenedor.addEventListener("mousemove", moverContenedorTeSigo)
     function moverContenedorTeSigo(evento) {
+        // Le sumo 15 pixeles en la coordenada X para que sigueRatonDiv no quede por debajo del raton
+        // y se pueda leer correctamente.
         sigueRatonDiv.style.left = (evento.pageX + 15) + "px";
         sigueRatonDiv.style.top = evento.pageY + "px";
     }
@@ -62,7 +64,7 @@
     document.addEventListener("click", mostrarElementoPulsado)
     function mostrarElementoPulsado(evento) {
         evento.preventDefault()
-        // alert("Has pulsado en el " + evento.target.localName)
+        alert("Has pulsado en el " + evento.target.localName)
     }
 </script>
 

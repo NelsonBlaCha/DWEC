@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5 Ejercicio 5</title>
+    <style>
+        #miFormulario {
+            border: 1px solid black;
+            height: 300px;
+        }
+
+        #miFormulario label {
+            margin: 25px auto;
+            display: block;
+        }
+
+        button {
+            margin: 25px auto;
+        }
+
+        .ocultar {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>EVENTOS DE FORMULARIO (FASE BURBUJA)</h1>
+    <button id="botonMostrarFormulario">Mostrar formulario</button>
+    <button id="botonOcultarFormulario">Ocultar formulario</button>
+    <form action="" method="post" id="miFormulario">
+        <h2>MI FORMULARIO</h2>
+        <label>Nombre:
+            <input type="text" name="nombre" value="Nombre" />
+        </label>
+        <label>Apellidos:
+            <input type="text" name="apellidos" value="Apellidos" />
+        </label>
+        <label>Direccion:
+            <input type="text" name="direccion" value="Direccion" />
+        </label>
+        <label>Teléfono:
+            <input type="text" name="telefono" value="Teléfono" />
+        </label>
+    </form>
+</body>
+<script>
+    // - Para mostrar u ocultar el formulario he optado por utilizar la propiedad Display en CSS
+    // - La unica posibilidad en la que el formulario no se muestra es que display sea none
+    // - Controlo la propiedad display con la funcion formularioEsVisible()
+    // - He optado en hacer dos funciones para mostrar y ocultar porque, aunque la logica es similar,
+    // creo que es mejor separar cada codigo para verlo mas claro.
+
+    const formulario = document.getElementById("miFormulario");
+    const botonMostrarFormulario = document.getElementById("botonMostrarFormulario");
+    const botonOcultarFormulario = document.getElementById("botonOcultarFormulario");
+
+    botonMostrarFormulario.addEventListener("click", mostrarFormulario);
+    botonOcultarFormulario.addEventListener("click", ocultarFormulario);
+
+    function mostrarFormulario(evento) {
+        if (formularioEsVisible()) {
+            alert("El formulario ya se muestra");
+        } else {
+            formulario.style.display = "block";
+        }
+    }
+
+    function ocultarFormulario(evento) {
+        if (formularioEsVisible()) {
+            formulario.style.display = "none";
+        } else {
+            alert("El formulario ya esta oculto");
+        }
+    }
+
+    function formularioEsVisible() {
+        const esVisible = formulario.style.display != "none";
+        return esVisible;
+    }
+</script>
+
+</html>

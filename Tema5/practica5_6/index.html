@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5 Ejercicio 6</title>
+    <style>
+        main {
+            display: flex;
+        }
+
+        #imagenPorDefecto,
+        #imagenIncidencia,
+        #imagenPassword {
+            width: 300px;
+            margin: 50px 50px;
+        }
+
+        #imagenIncidencia,
+        #imagenPassword {
+            display: none;
+        }
+
+        #formularioIncidencia,
+        #formularioPassword {
+            display: none;
+        }
+    </style>
+    <script src="./javascript/mostrarImagenYFormulario.js" defer></script>
+    <script src="./javascript/formularioIncidencia.js" defer></script>
+    <script src="./javascript/formularioPassword.js" defer></script>
+</head>
+
+<body>
+    <div id="botonesMostrarFormulario">
+        <h1>
+            Menu de acciones
+        </h1>
+        <!-- El autocomplete off es para que cuando se recargue la pagina no se mantenga el radio button marcado -->
+        <input type="radio" name="opciones" id="mostrarFormularioIncidencia" autocomplete="off">
+        <label for="opciones">Incidencia</label>
+        <input type="radio" name="opciones" id="mostrarFormularioPassword" autocomplete="off">
+        <label for="opciones">Cambiar password</label>
+    </div>
+    <main>
+        <div>
+            <img src="./images/amanecer.jpg" alt="incidenciaInformatica" id="imagenPorDefecto">
+            <img src="./images/incidenciaInformatica.jpg" alt="incidenciaInformatica" id="imagenIncidencia">
+            <img src="./images/password.jpg" alt="incidenciaInformatica" id="imagenPassword">
+        </div>
+        <div>
+            <form action="" id="formularioIncidencia">
+                <h2>FORMULARIO DE INCIDENCIAS INFORMATICAS</h2>
+                <label for="areaIncidencia">Nombre</label>
+                <select name="areaIncidencia" id="areaIncidencia">
+                    <option>Gerencia</option>
+                    <option>Software</option>
+                    <option>RRHH</option>
+                </select>
+                <div>
+                    <label for="nombre">Nombre</label>
+                    <input type="text" name="nombre" id="nombre">
+                </div>
+                <div>
+                    <label for="apellidos">Apellidos</label>
+                    <input type="text" name="apellidos" id="apellidos">
+                </div>
+                <div>
+                    <label for="direccion">Direccion</label>
+                    <input type="text" name="direccion" id="direccion">
+                </div>
+                <div>
+                    <label for="telefono">Telefono</label>
+                    <input type="text" name="telefono" id="telefono">
+                </div>
+                <div>
+                    <label for="descripcion"></label>
+                    <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
+                </div>
+                <input type="submit" value="Enviar formulario" id="botonEnviarFormularioIncidencias"><br><br>
+                <input type="reset" value="Resetear formulario">
+            </form>
+        </div>
+        <div>
+            <form action="" id="formularioPassword">
+                <h2>FORMULARIO DE CAMBIO DE PASSWORD</h2>
+                <p>El password debe tener las siguientes caracteristicas:</p>
+                <ul>
+                    <li>Al menos un nº 0-9</li>
+                    <li>Al menos una letra minúscula a-z</li>
+                    <li>Al menos una letra mayúscula A-Z</li>
+                    <li>Al menos un caracter especial: !@#\$%\^&\*</li>
+                    <li>Al menos 8 caracteres y menos de 16 caracteres</li>
+                </ul>
+                <label for="antiguoPassword">Introduzca el password antiguo: </label>
+                <input type="text" name="antiguoPassword" id="antiguoPassword"><br><br>
+                <label for="nuevoPassword">Introduzca el password nuevo: </label>
+                <input type="text" name="nuevoPassword" id="nuevoPassword"><br><br>
+                <label for="repetirNuevoPassword">Repita el password nuevo: </label>
+                <input type="text" name="repetirNuevoPassword" id="repetirNuevoPassword"><br><br>
+
+                <input type="submit" value="Enviar formulario" id="botonEnviarFormularioPassword"><br><br>
+                <input type="reset" value="Resetear formulario">
+            </form>
+        </div>
+    </main>
+</body>
+<script>
+    const antiguoPassword = document.getElementById("antiguoPassword");
+    const nuevoPassword = document.getElementById("nuevoPassword");
+    const repetirNuevoPassword = document.getElementById("repetirNuevoPassword");
+
+    // formularioPassword.addEventListener("change", comprobarTodoCorrecto)
+    antiguoPassword.addEventListener("change", (evento) => {
+
+    })
+    nuevoPassword.addEventListener("change", (evento) => {
+
+    })
+    repetirNuevoPassword.addEventListener("change", (evento) => {
+
+    })
+
+    function comprobarTodoCorrecto(evento) {
+        evento.preventDefault();
+        numeroCamposRellenadosDelFormularioPassword();
+        passwordNuevoValido();
+        passwordRepetidoIgual();
+    }
+
+    function numeroCamposRellenadosDelFormularioPassword() {
+        let camposRellenadosDelFormulario = 0;
+        for (let index = 0; index < formularioPassword.elements.length; index++) {
+            if (formularioPassword.elements[index].value == "") {
+                console.log("El campo " + formularioPassword.elements[index].id + " esta vacio");
+            } else {
+                camposRellenadosDelFormulario++;
+            }
+        }
+        return camposRellenadosDelFormulario;
+    }
+
+    function passwordNuevoValido() {
+        const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,16}$)/
+        const nuevoPassword = document.getElementById("nuevoPassword");
+        if (regEx.test(nuevoPassword)) {
+            return true
+        }
+        console.log("El password no es valido");
+        return false
+    }
+
+    function passwordRepetidoIgual() {
+        if (nuevoPassword.value == repetirNuevoPassword.value) {
+            return true
+        }
+        console.log("Los password no coinciden");
+        return false
+    }
+
+    // PREVENT DEFAULT
+    const botonEnviarFormularioPassword = document.getElementById("botonEnviarFormularioPassword");
+    botonEnviarFormularioPassword.addEventListener("click", (evento) => {
+        evento.preventDefault();
+        numeroCamposRellenadosDelFormularioPassword();
+    })
+</script>
+
+</html>

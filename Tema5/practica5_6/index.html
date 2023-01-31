@@ -40,7 +40,7 @@
         </h1>
         <!-- El autocomplete off es para que cuando se recargue la pagina no se mantenga el radio button marcado -->
         <input type="radio" name="opciones" id="mostrarFormularioIncidencia" autocomplete="off">
-        <label for="opciones">Incidencia</label>
+        <label for="opciones">Incidencia informatica</label>
         <input type="radio" name="opciones" id="mostrarFormularioPassword" autocomplete="off">
         <label for="opciones">Cambiar password</label>
     </div>
@@ -76,7 +76,7 @@
                     <input type="text" name="telefono" id="telefono">
                 </div>
                 <div>
-                    <label for="descripcion"></label>
+                    <label for="descripcion">Descripcion</label><br>
                     <textarea name="descripcion" id="descripcion" cols="30" rows="10"></textarea>
                 </div>
                 <input type="submit" value="Enviar formulario" id="botonEnviarFormularioIncidencias"><br><br>
@@ -108,64 +108,7 @@
     </main>
 </body>
 <script>
-    const antiguoPassword = document.getElementById("antiguoPassword");
-    const nuevoPassword = document.getElementById("nuevoPassword");
-    const repetirNuevoPassword = document.getElementById("repetirNuevoPassword");
-
-    // formularioPassword.addEventListener("change", comprobarTodoCorrecto)
-    antiguoPassword.addEventListener("change", (evento) => {
-
-    })
-    nuevoPassword.addEventListener("change", (evento) => {
-
-    })
-    repetirNuevoPassword.addEventListener("change", (evento) => {
-
-    })
-
-    function comprobarTodoCorrecto(evento) {
-        evento.preventDefault();
-        numeroCamposRellenadosDelFormularioPassword();
-        passwordNuevoValido();
-        passwordRepetidoIgual();
-    }
-
-    function numeroCamposRellenadosDelFormularioPassword() {
-        let camposRellenadosDelFormulario = 0;
-        for (let index = 0; index < formularioPassword.elements.length; index++) {
-            if (formularioPassword.elements[index].value == "") {
-                console.log("El campo " + formularioPassword.elements[index].id + " esta vacio");
-            } else {
-                camposRellenadosDelFormulario++;
-            }
-        }
-        return camposRellenadosDelFormulario;
-    }
-
-    function passwordNuevoValido() {
-        const regEx = /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,16}$)/
-        const nuevoPassword = document.getElementById("nuevoPassword");
-        if (regEx.test(nuevoPassword)) {
-            return true
-        }
-        console.log("El password no es valido");
-        return false
-    }
-
-    function passwordRepetidoIgual() {
-        if (nuevoPassword.value == repetirNuevoPassword.value) {
-            return true
-        }
-        console.log("Los password no coinciden");
-        return false
-    }
-
-    // PREVENT DEFAULT
-    const botonEnviarFormularioPassword = document.getElementById("botonEnviarFormularioPassword");
-    botonEnviarFormularioPassword.addEventListener("click", (evento) => {
-        evento.preventDefault();
-        numeroCamposRellenadosDelFormularioPassword();
-    })
+    
 </script>
 
 </html>

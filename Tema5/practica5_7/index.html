@@ -9,7 +9,45 @@
 </head>
 
 <body>
-
+    <h1>ACCESO A COOKIES</h1>
+    <label for="">Introduce el nombre y el valor de la cookie
+        <input type="text" name="nombreValorCookie" id="nombreValorCookie">
+    </label><br>
+    <label for="">Introduce los dias para guardar la cookie
+        <input type="number" name="diasCookie" id="diasCookie">
+    </label><br>
+    <button id="botonGuardarCookie">Guardar cookie</button><br>
+    <button id="botonVerCookies">Ver cookies</button>
+    <div id="verCookies"></div>
+    <button id="BotonVerCookiesDescodificadas">Ver cookies decodificadas</button>
+    <div id="verCookiesDescodificadas"></div>
 </body>
+<script>
+    const botonGuardarCookie = document.getElementById("botonGuardarCookie")
+    const botonVerCookies = document.getElementById("botonGuardarCookie")
+    const BotonVerCookiesDescodificadas = document.getElementById("botonGuardarCookie")
+
+    botonGuardarCookie.addEventListener("click", guardarCookie)
+    botonVerCookies.addEventListener("click", verCookies)
+
+    function guardarCookie() {
+        const nombreValorCookie = document.getElementById("nombreValorCookie").value
+        const diasCookie = document.getElementById("diasCookie").value
+        const calculoDiasExpiracionEnMiliSegundos = parseInt(diasCookie) * 24 * 60 * 60 * 1000
+        // Creo una fecha desde hoy y le agrego el tiempo del usuario en milisegundos
+        let diasCookieUTC = new Date(Date.now() + calculoDiasExpiracionEnMiliSegundos);
+        // A continuacion mediante un metodo la transformo a UTC para la cookie
+        diasCookieUTC = diasCookieUTC.toUTCString();
+        document.cookie = `${nombreValorCookie};expires=${diasCookieUTC}`
+    }
+
+    function verCookies() {
+        const cookies = document.cookie.split(";")
+        cookies.forEach(element => {
+            console.log(element.trim());
+        });
+    }
+
+</script>
 
 </html>

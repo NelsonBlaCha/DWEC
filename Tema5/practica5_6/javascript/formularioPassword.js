@@ -1,12 +1,17 @@
+// He agregado un evento click al boton enviar formulario y un evento change a cada input
+// La funcion llama a otra funcion que comprueba que todos los campos estan rellenos,
+// que el password nuevo cumple el RegEx y que el password repetido coincida.
+// Si todo es correcto, esta funcion devolvera un true y se mostrara un mensaje de formulario enviado.
+
 const antiguoPassword = document.getElementById("antiguoPassword");
 const nuevoPassword = document.getElementById("nuevoPassword");
 const repetirNuevoPassword = document.getElementById("repetirNuevoPassword");
 const botonEnviarFormularioPassword = document.getElementById("botonEnviarFormularioPassword");
 
 botonEnviarFormularioPassword.addEventListener("click", enviarFormulario)
-antiguoPassword.addEventListener("blur", todoCorrecto)
-nuevoPassword.addEventListener("blur", todoCorrecto)
-repetirNuevoPassword.addEventListener("blur", todoCorrecto)
+antiguoPassword.addEventListener("change", todoCorrecto)
+nuevoPassword.addEventListener("change", todoCorrecto)
+repetirNuevoPassword.addEventListener("change", todoCorrecto)
 
 function enviarFormulario(evento) {
     if (todoCorrecto(evento)) {
@@ -27,7 +32,9 @@ function todoCorrecto(evento) {
 }
 
 function todosCamposRellenados() {
-    // Si alguno de los campos, o todos, esta vacio mostrara un mensaje y devolvera false
+    // Si alguno de los campos, o todos, esta vacio mostrara un mensaje y devolvera false.
+    // Al contrario que la funcion del formulario anterior, he optado por no recorrer los campos con un bucle
+    // ya que en principio en este caso no habria escalabilidad y siempre habra 3 campos.
     let respuesta = true;
     if (antiguoPassword.value == '') {
         alert("El campo password antiguo esta vacio.");

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cookies</title>
+    <script>
+        document.cookie = "cookie=valorCookie"
+        document.cookie = "cookie=valorCookie2"
+        document.cookie = "cookie3=valorCookie3"
+        const cookies = document.cookie.split(";")
+        cookies.forEach(element => {
+            console.log(element.trim());
+        });
+        // Expira la cookie. Si no ponemos expires la cookie caduca al cerrar el navegador.
+        document.cookie = "cookie4=valorCookie4;expires=fechaUTC"
+        // Borrar cookie. Ponemos una fechaUTC anterior a hoy
+        document.cookie = "cookie5=valorCookie5;expires=fechaUtcAnteriorHoy"
+        // Acotar la cookie que puede ser leida. Si tenemos varias paginas por ejemplo.
+        document.cookie = "cookie6=valorCookie6;path=/alumnos/daw"
+        // Lo mismo para dominios o subdominios
+        document.cookie = "cookie7=valorCookie7;domain=midominio.com"
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>

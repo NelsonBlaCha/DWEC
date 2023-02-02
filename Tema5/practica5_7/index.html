@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 5 Ejercicio 7</title>
+</head>
+
+<body>
+    <h1>ACCESO A COOKIES</h1>
+    <label for="">Introduce el nombre y el valor de la cookie
+        <input type="text" name="nombreCookie" id="nombreCookie" placeholder="Nombre de la cookie">
+        =
+        <input type="text" name="valorCookie" id="valorCookie" placeholder="Valor de la cookie">
+    </label><br><br>
+    <label for="">Introduce los dias para guardar la cookie
+        <input type="number" name="diasCookie" id="diasCookie">
+    </label><br><br>
+    <button id="botonGuardarCookie">Guardar cookie</button><br><br>
+    <button id="botonVerCookies">Ver cookies</button>
+    <div id="verCookies"></div><br>
+    <button id="BotonVerCookiesDescodificadas">Ver cookies decodificadas</button>
+    <div id="verCookiesDescodificadas"></div>
+</body>
+
+<script>
+    const botonGuardarCookie = document.getElementById("botonGuardarCookie")
+    const botonVerCookies = document.getElementById("botonVerCookies")
+    const BotonVerCookiesDescodificadas = document.getElementById("BotonVerCookiesDescodificadas")
+
+    botonGuardarCookie.addEventListener("click", guardarCookie)
+    botonVerCookies.addEventListener("click", verCookiesCodificadas)
+    BotonVerCookiesDescodificadas.addEventListener("click", verCookiesDecodificadas)
+
+    function guardarCookie() {
+        const nombreCookie = document.getElementById("nombreCookie").value
+        const valorCookie = document.getElementById("valorCookie").value
+        const diasCookie = parseInt(document.getElementById("diasCookie").value)
+
+        const calculoDiasExpiracionEnMiliSegundos = diasCookie * 24 * 60 * 60 * 1000
+        // Creo una fecha desde hoy y le agrego el tiempo del usuario en milisegundos
+        let diasCookieUTC = new Date(Date.now() + calculoDiasExpiracionEnMiliSegundos);
+        // A continuacion mediante un metodo la transformo a UTC para la cookie
+        diasCookieUTC = diasCookieUTC.toUTCString();
+        // Codifico la cookie
+        const cookieCodificada = encodeURIComponent(nombreCookie) + '=' + encodeURIComponent(valorCookie);
+        // Guardo la cookie
+        document.cookie = `${cookieCodificada};expires=${diasCookieUTC}`
+    }
+
+    function verCookiesCodificadas() {
+        const verCookies = document.getElementById("verCookies");
+        const cookies = document.cookie.split(";")
+        verCookies.textContent = "Las cookies que tengo grabadas son: ";
+
+        cookies.forEach(element => {
+            const parrafo = document.createElement("p");
+            const texto = document.createTextNode(element);
+            parrafo.appendChild(texto);
+            verCookies.appendChild(parrafo)
+        });
+    }
+
+    function verCookiesDecodificadas() {
+        const verCookiesDescodificadas = document.getElementById("verCookiesDescodificadas");
+        const cookies = document.cookie.split(";")
+        verCookiesDescodificadas.textContent = "Las cookies que tengo grabadas son: ";
+
+        cookies.forEach(element => {
+            const parrafo = document.createElement("p");
+            const cookieDecodificada = decodeURIComponent(element);
+            const texto = document.createTextNode(cookieDecodificada);
+            parrafo.appendChild(texto);
+            verCookiesDescodificadas.appendChild(parrafo)
+        });
+    }
+
+</script>
+
+</html>

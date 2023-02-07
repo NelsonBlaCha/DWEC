@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen</title>
+    <style>
+        .tecla {
+            box-sizing: border-box;
+            background-color: dimgrey;
+            text-align: center;
+            color: aliceblue;
+            font-weight: 500;
+            font-size: 50px;
+            border-radius: 20px;
+            width: 100px;
+            height: 100px;
+            border: solid 5px rgb(0, 0, 0);
+            padding-top: 15px;
+        }
+
+        .cuerpo {
+            display: grid;
+            justify-content: center;
+            grid-template-columns: repeat(5 1 fr);
+            grid-template-rows: auto;
+            gap: 10px;
+            border-radius: 10px;
+            width: 550px;
+            height: auto;
+            border: solid 5px rgb(0, 0, 0);
+            margin-top: 5px;
+            background-color: rgb(0, 0, 0);
+        }
+
+        #pantalla {
+            grid-row: 1;
+            grid-column: span 5;
+            border-radius: 10px;
+            height: 70px;
+            width: 100%;
+            background-color: aliceblue;
+            text-align: right;
+            color: rgb(10, 10, 10);
+            font-weight: 500;
+            font-size: 60px;
+        }
+
+        #tecla7 {
+            grid-row: 2;
+            grid-column: 1;
+        }
+
+        #tecla8 {
+            grid-row: 2;
+            grid-column: 2;
+        }
+
+        #tecla9 {
+            grid-row: 2;
+            grid-column: 3;
+        }
+
+        #teclaAC {
+            grid-row: 2;
+            grid-column: 4;
+            background-color: rgb(215, 76, 76);
+        }
+
+        #teclaOnOff {
+            grid-row: 2;
+            grid-column: 5;
+            font-size: 25px;
+            padding-top: 30px;
+            background-color: rgb(215, 76, 76);
+        }
+
+        #tecla4 {
+            grid-row: 3;
+            grid-column: 1;
+        }
+
+        #tecla5 {
+            grid-row: 3;
+            grid-column: 2;
+        }
+
+        #tecla6 {
+            grid-row: 3;
+            grid-column: 3;
+        }
+
+        #teclaMultiplicacion {
+            grid-row: 3;
+            grid-column: 4;
+            background-color: rgb(134, 151, 237);
+        }
+
+        #teclaDivision {
+            grid-row: 3;
+            grid-column: 5;
+            background-color: rgb(134, 151, 237);
+        }
+
+        #tecla1 {
+            grid-row: 4;
+            grid-column: 1;
+        }
+
+        #tecla2 {
+            grid-row: 4;
+            grid-column: 2;
+        }
+
+        #tecla3 {
+            grid-row: 4;
+            grid-column: 3;
+        }
+
+        #teclaSuma {
+            grid-row: 4;
+            grid-column: 4;
+            background-color: rgb(134, 151, 237);
+        }
+
+        #teclaResta {
+            grid-row: 4;
+            grid-column: 5;
+            background-color: rgb(134, 151, 237);
+        }
+
+        #tecla0 {
+            grid-row: 5;
+            grid-column: 1;
+        }
+
+        #teclaPunto {
+            grid-row: 5;
+            grid-column: 2;
+        }
+
+        #teclaIgual {
+            grid-row: 5;
+            grid-column: 5;
+            background-color: rgb(134, 151, 237);
+        }
+    </style>
+</head>
+
+<body>
+    <h1> Mi calculadora alumno: Nelson Blanco Charro</h1>
+    <div class="cuerpo" id="cuerpo"><!--Es el div que muestra el cuerpo negro de la calculadora-->
+
+        <!--Es el div que muestra la salida por pantalla de la calculadora-->
+        <div id="pantalla" class="pantalla"></div>
+
+        <!--Son los div´s que muestran las teclas de la calculadora-->
+        <div id="tecla0" class="tecla">0</div>
+        <div id="tecla1" class="tecla">1</div>
+        <div id="tecla2" class="tecla">2</div>
+        <div id="tecla3" class="tecla">3</div>
+        <div id="tecla4" class="tecla">4</div>
+        <div id="tecla5" class="tecla">5</div>
+        <div id="tecla6" class="tecla">6</div>
+        <div id="tecla7" class="tecla">7</div>
+        <div id="tecla8" class="tecla">8</div>
+        <div id="tecla9" class="tecla">9</div>
+        <div id="teclaSuma" class="tecla">+</div>
+        <div id="teclaResta" class="tecla">-</div>
+        <div id="teclaDivision" class="tecla">/</div>
+        <div id="teclaMultiplicacion" class="tecla">x</div>
+        <div id="teclaPunto" class="tecla">.</div>
+        <div id="teclaIgual" class="tecla">=</div>
+        <div id="teclaAC" class="tecla">AC</div>
+        <div id="teclaOnOff" class="tecla">On/Off</div>
+    </div>
+</body>
+<script>
+    // Variables globales
+    let calculadoraEncendida = false;
+    let primerOperando = "";
+    let segundoOperando = "";
+    let operacionElegidaUsuario = false;
+
+    // Seleccion elementos
+    const teclaOnOff = document.getElementById("teclaOnOff")
+    const pantalla = document.getElementById("pantalla")
+    const cuerpo = document.getElementById("cuerpo")
+
+    // Listeners
+    teclaOnOff.addEventListener("click", encendidoApagado)
+    cuerpo.addEventListener("click", teclaPulsada)
+
+    // Funciones
+    function teclaPulsada(evento) {
+        // Lo voy a hacer por delegacion de eventos
+        if (calculadoraEncendida) {
+            switch (evento.target.textContent) {
+                // Resetear
+                case "AC":
+                    pantalla.textContent = 0
+                    resetearTodo()
+                    break;
+                // Numeros
+                case ".":
+                case "0":
+                case "1":
+                case "2":
+                case "3":
+                case "4":
+                case "5":
+                case "6":
+                case "7":
+                case "8":
+                case "9":
+                    guardarOperandos(evento.target.textContent)
+                    break;
+                // Operaciones
+                case "x":
+                    operacion("multiplicacion")
+                    break;
+                case "/":
+                    operacion("division")
+                    break;
+                case "+":
+                    operacion("suma")
+                    break;
+                case "-":
+                    operacion("resta")
+                    break;
+                // Igual
+                case "=":
+                    mostarPorPantalla()
+                    break;
+            }
+        } else {
+            console.log("Pantalla apagada");
+        }
+    }
+
+    function encendidoApagado() {
+        if (calculadoraEncendida) {
+            calculadoraEncendida = false;
+            pantalla.textContent = ""
+        } else {
+            calculadoraEncendida = true
+            pantalla.textContent = 0
+        }
+        resetearTodo()
+    }
+
+    function guardarOperandos(numero) {
+        // Si es el primer numero pulsado lo controlo vigilando que no se ha pulsado el boton de operacion
+        if (!operacionElegidaUsuario) {
+            if (numero == ".") {
+                // Si no se ha pulsado el punto antes
+                if (primerOperando.indexOf(".") == -1) {
+                    primerOperando += numero
+                    pantalla.textContent = primerOperando
+                }
+                // Si se ha pulsado el punto antes
+                else {
+                    console.log("Ya ha pulsado el boton de decimales");
+                }
+            } else if (numero != ".") {
+                primerOperando += numero
+                pantalla.textContent = primerOperando
+            }
+        } else {
+            if (numero == ".") {
+                // Si no se ha pulsado el punto antes
+                if (segundoOperando.indexOf(".") == -1) {
+                    segundoOperando += numero
+                    pantalla.textContent = segundoOperando
+                }
+                // Si se ha pulsado el punto antes
+                else {
+                    console.log("Ya ha pulsado el boton de decimales");
+                }
+            } else if (numero != ".") {
+                segundoOperando += numero
+                pantalla.textContent = segundoOperando
+            }
+        }
+    }
+
+    function operacion(operacion) {
+        if (!operacionElegidaUsuario) {
+            switch (operacion) {
+                case "multiplicacion":
+                    pantalla.textContent = "x"
+                    operacionElegidaUsuario = "multiplicacion"
+                    break;
+                case "division":
+                    pantalla.textContent = "/"
+                    operacionElegidaUsuario = "division"
+                    break;
+                case "suma":
+                    pantalla.textContent = "+"
+                    operacionElegidaUsuario = "suma"
+                    break;
+                case "resta":
+                    pantalla.textContent = "-"
+                    operacionElegidaUsuario = "resta"
+                    break;
+            }
+        } else {
+            console.log("Ya ha elegido una operacion");
+        }
+    }
+
+    function mostarPorPantalla() {
+        let resultado = 0
+        // 3.A. Si con un 0 en pantalla pulso X3 o /7 o -2
+        if (primerOperando == "" && segundoOperando) {
+            primerOperando = 0
+        }
+        //3.B Si pulso 3X o 7/ o 2-
+        if (primerOperando && segundoOperando == "") {
+            segundoOperando = primerOperando
+        }
+        // Obtener resultados de las operaciones
+        if (operacionElegidaUsuario == "multiplicacion") {
+            resultado = parseFloat(primerOperando) * parseFloat(segundoOperando)
+        }
+        if (operacionElegidaUsuario == "division") {
+            resultado = parseFloat(primerOperando) / parseFloat(segundoOperando)
+        }
+        if (operacionElegidaUsuario == "suma") {
+            resultado = parseFloat(primerOperando) + parseFloat(segundoOperando)
+        }
+        if (operacionElegidaUsuario == "resta") {
+            resultado = parseFloat(primerOperando) - parseFloat(segundoOperando)
+        }
+        // Mostrar los resultados
+        pantalla.textContent = resultado
+        // Resetear resultados
+        resetearTodo()
+    }
+
+    function resetearTodo() {
+        primerOperando = ""
+        segundoOperando = ""
+        operacionElegidaUsuario = false
+    }
+</script>
+
+</html>

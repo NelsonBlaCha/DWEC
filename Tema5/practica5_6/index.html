@@ -27,6 +27,10 @@
         #formularioPassword {
             display: none;
         }
+
+        #inputNuevoPassword {
+            border: 1px solid red;
+        }
     </style>
     <script src="./javascript/mostrarImagenYFormulario.js" defer></script>
     <script src="./javascript/formularioIncidencia.js" defer></script>
@@ -96,8 +100,10 @@
                 </ul>
                 <label for="antiguoPassword">Introduzca el password antiguo: </label>
                 <input type="text" name="antiguoPassword" id="antiguoPassword"><br><br>
-                <label for="nuevoPassword">Introduzca el password nuevo: </label>
-                <input type="text" name="nuevoPassword" id="nuevoPassword"><br><br>
+                <div id="inputNuevoPassword">
+                    <label for="nuevoPassword">Introduzca el password nuevo: </label>
+                    <input type="text" name="nuevoPassword" id="nuevoPassword"><br><br>
+                </div>
                 <label for="repetirNuevoPassword">Repita el password nuevo: </label>
                 <input type="text" name="repetirNuevoPassword" id="repetirNuevoPassword"><br><br>
 
@@ -108,7 +114,25 @@
     </main>
 </body>
 <script>
+    // Evento Input
+    nuevoPassword.addEventListener("input", (evento) => {
+        const cumpleRegEx = passwordCumpleRegEx();
+        const inputNuevoPassword = document.getElementById("inputNuevoPassword")
+        if (cumpleRegEx) {
+            inputNuevoPassword.style.border = "1px solid red"
+        } else {
+            inputNuevoPassword.style.border = "0px solid red"
+        }
+    })
     
+    function passwordCumpleRegEx() {
+        const regEx = new RegExp(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!@#\$%\^&\*])(?=.{8,16}$)/)
+        const nuevoPassword = document.getElementById("nuevoPassword");
+        if (regEx.test(nuevoPassword.value)) {
+            return true
+        }
+        return false
+    }
 </script>
 
 </html>

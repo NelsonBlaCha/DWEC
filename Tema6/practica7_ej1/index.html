@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practica 7 Ejercicio 1</title>
+</head>
+
+<body>
+    <label>Introduzca su tiempo en segundos</label><br>
+    <p id="mensaje"></p>
+    <input type="text" id="tiempo"><br>
+    <button onclick="mostrarMensaje()">Hacer cosas</button>
+</body>
+<script>
+
+    let promesa1 = new Promise((resolver) => {
+        const tiempoUsuario = parseInt(document.getElementById("tiempo").value) * 1000
+        setTimeout(() => { resolver(`Resolviendo en ${tiempoUsuario} segundos`) }, tiempoUsuario);
+    });
+    async function mostrarMensaje() {
+        let mensaje1 = await promesa1;
+        console.log(mensaje1);
+    }
+    // esperar()
+
+</script>
+
+</html>

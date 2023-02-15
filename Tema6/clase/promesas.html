@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promesas</title>
+    <script>
+        let promesa1 = Promise.resolve('todo ha ido genial!');
+
+        let promesa2 = new Promise((resolver) => {
+
+            setTimeout(() => { resolver('Resolviendo en 3seg….') }, 3000);
+
+        });
+
+        let promesa3 = new Promise((resolver) => {
+
+            setTimeout(() => { resolver('Resolviendo en 8seg….') }, 8000);
+
+        });
+
+        async function esperar11seg() {
+
+            let mensaje1 = await Promise.resolve('todo ha ido genial!');
+
+            console.log(mensaje1);
+
+            let mensaje2 = await new Promise((resolver) => {
+
+                setTimeout(() => { resolver('Resolviendo en 3seg….') }, 3000);
+            });
+
+            console.log(mensaje2);
+
+            let mensaje3 = await new Promise((resolver) => {
+
+                setTimeout(() => { resolver('Resolviendo en 8seg….') }, 8000);
+            });
+
+            console.log(mensaje3);
+
+        }
+        esperar11seg()
+
+        async function esperar8seg() {
+
+            let mensaje1 = await promesa1;
+
+            console.log(mensaje1);
+
+            let mensaje2 = await promesa2;
+
+            console.log(mensaje2);
+
+            let mensaje3 = await promesa3;
+
+            console.log(mensaje3);
+
+        }
+        esperar8seg()
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
